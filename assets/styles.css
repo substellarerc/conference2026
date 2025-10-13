@@ -1,0 +1,16 @@
+:root{
+  --accent:#0b3d91;
+  --muted:#666;
+  --bg:#fff;
+  --maxw:1000px;
+}
+body{font-family:Inter, "Helvetica Neue", Arial, sans-serif; margin:0; color:#111; background:var(--bg);}
+header{background:#fff; border-bottom:1px solid #eee;}
+.container{max-width:var(--maxw); margin:0 auto; padding:20px;}
+nav{display:flex; gap:18px; align-items:center;}
+nav a{color:inherit; text-decoration:none; font-weight:600;}
+.hero img{width:100%; height:auto; display:block; border-radius:6px;}
+.grid{display:grid; grid-template-columns:1fr 320px; gap:24px; align-items:start;}
+.card{background:#fafafa; padding:16px; border-radius:8px; border:1px solid #eee;}
+footer{border-top:1px solid #eee; padding:20px; text-align:center; color:var(--muted); font-size:14px;}
+@media(max-width:880px){ .grid{grid-template-columns:1fr;} nav{flex-wrap:wrap;} }
