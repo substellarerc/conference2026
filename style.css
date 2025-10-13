@@ -1,0 +1,23 @@
+/* style.css */
+.top-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+  background-color: #f0f0f0;
+}
+
+.top-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+@media (max-width: 600px) {
+  .top-menu {
+    gap: 10px;
+    font-size: 14px;
+  }
+}
