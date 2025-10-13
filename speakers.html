@@ -2,22 +2,53 @@
     <html lang="en">
     <head>
 
-      <style>
-        .top-menu {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 20px;
-          padding: 10px 0;
-          background-color: #f0f0f0;
-        }
-        .top-menu a {
-          text-decoration: none;
-          color: #333;
-          font-weight: bold;
-          padding: 5px 10px;
-        }
-      </style>
+
+  <!-- Inline CSS -->
+  <style>
+    /* ====== MENU STYLES ====== */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .top-menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #f0f0f0;
+      padding: 10px 0;
+    }
+
+    .top-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+
+    /* ====== MOBILE VERSION ====== */
+    @media (max-width: 600px) {
+      .menu-toggle {
+        display: block;           /* show the menu button */
+      }
+      .top-menu {
+        display: none;            /* hide menu by default */
+        flex-direction: column;   /* stack links vertically */
+        align-items: center;
+        background-color: #f0f0f0;
+        width: 100%;
+      }
+      .top-menu a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 
       <link rel="icon" type="image/x-icon" href="s.ico">
       <meta charset="utf-8">
