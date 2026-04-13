@@ -1,0 +1,387 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+
+
+  <!-- Inline CSS -->
+  <style>
+    /* ====== MENU STYLES ====== */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .top-menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #f0f0f0;
+      padding: 10px 0;
+    }
+
+    .top-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+
+    /* ====== MOBILE VERSION ====== */
+    @media (max-width: 600px) {
+      .menu-toggle {
+        display: block;           /* show the menu button */
+      }
+      .top-menu {
+        display: none;            /* hide menu by default */
+        flex-direction: column;   /* stack links vertically */
+        align-items: center;
+        background-color: #f0f0f0;
+        width: 100%;
+      }
+      .top-menu a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+
+      <link rel="icon" type="image/x-icon" href="s.ico">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>SUBSTELLAR ASTROPHYSICS</title>
+      <link rel="stylesheet" href="assets/styles.css">
+    
+<style>
+/* Participants page styles without Bootstrap */
+main.container > h1 {
+  margin-top: 0;
+}
+
+.participant-list {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.participant-row {
+  padding: 10px 14px;
+  border-bottom: 1px solid #eceff1;
+  line-height: 1.25;
+}
+
+.participant-row:last-child {
+  border-bottom: none;
+}
+
+.participant-name {
+  font-weight: 600;
+}
+
+.participant-name a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.participant-affiliation {
+  color: #6c757d;
+  font-size: 0.92rem;
+  margin-top: 2px;
+}
+
+@media print {
+  .participant-list {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+</style>
+
+</head>
+    <body>
+    <header>
+  <div class="container">
+    <nav>
+      <a href="index.html"><strong>SUBSTELLAR ASTROPHYSICS</strong></a>
+      <div style="flex:1"></div>
+      <a href="index.html"><img src='home.png' height='15'></a>
+      <a href="participants.html">Participants</a>
+      <a href="program.html">Program</a>
+<!--      <a href="registration.html">Registration</a>-->
+      <a href="venue.html">Venue</a>
+      <a href="travel.html">Travel</a>
+      <a href="eclipse.html">Eclipse</a>
+      <a href="code.html">Code</a>
+      <a href="contact.html"><img src='contact.png' height='15'></a>
+    </nav>
+  </div>
+</header>
+
+
+    <main class="container">
+      <h1>Participants</h1>
+<p class="text-center">(sorted by family name)</p>
+  <div class="participant-list">
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_aguilar">John Fabio Aguilar Sànchez [ONLINE]</a></div>
+  <div class="participant-affiliation">Universidad Autónoma de Madrid, Spain / Departamento de Matemáticas, Universidad Militar Nueva Granada, Colombia</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_almendros_abad">Victor Almendros-Abad [LOC]</a></div>
+  <div class="participant-affiliation">INAF, Osservatorio Astronomico di Palermo, Italy</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_ardevol_martinez">Francisco Ardévol Martínez</a></div>
+  <div class="participant-affiliation">American Museum of Natural History, New York, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_barkaoui">Khalid Barkaoui [INVITED]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_barrado_navascues">David Barrado Navascués [INVITED]</a></div>
+  <div class="participant-affiliation">Centro de Astrobiología, Madrid, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_biller">Beth Biller [INVITED]</a></div>
+  <div class="participant-affiliation">Royal Observatory, Edinburgh, UK</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_beiler">Samuel Beiler</a></div>
+  <div class="participant-affiliation">Trinity College, Dublin, Ireland</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_bejar">Víctor J. S. Béjar</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_brunton">Ian R. Brunton</a></div>
+  <div class="participant-affiliation">California Institute of Technology, California, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_bull">Jared Bull</a></div>
+  <div class="participant-affiliation">Johns Hopkins University, Baltimore, Maryland, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_calamari">Emily Calamari</a></div>
+  <div class="participant-affiliation">American Museum of Natural History, New York, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_dominguez">Carlos Dominguez-Tagle</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_dupuy">Trent Dupuy</a></div>
+  <div class="participant-affiliation">University of Edinburgh, UK
+</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_endl">Michael Endl</a></div>
+  <div class="participant-affiliation">University of Texas, Austin, Texas 78712-1206, USA
+</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_fontanive">Clemence Fontanive</a></div>
+  <div class="participant-affiliation">Royal Observatory, Edinburgh, UK</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_fu">Guangwei Fu</a></div>
+  <div class="participant-affiliation">Johns Hopkins University, Baltimore, Maryland, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_gaidos">Eric Gaidos</a></div>
+  <div class="participant-affiliation">UHIfA, Hawaii USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_giovannini">Ilaria Giovannini [ONLINE]</a></div>
+  <div class="participant-affiliation">INAF-OAPD, University of Padova, Italy</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_gonzalez_ruilova">Camilo González-Ruilova</a></div>
+  <div class="participant-affiliation">USACH -YEMS, Santiago, Chile</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_gupta">Saumya Gupta</a></div>
+  <div class="participant-affiliation">Queen Mary University, London, UK</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_householder">Aaron Householder</a></div>
+  <div class="participant-affiliation">MIT, Cambridge, MA, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_jayawardhana">Ray Jayawardhana</a></div>
+  <div class="participant-affiliation">California Institute of Technology, California, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_jones">Hugh Jones</a></div>
+  <div class="participant-affiliation">University of Hertfordshire, UK</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_kammerer">Jens Kammerer</a></div>
+  <div class="participant-affiliation">European Southern Observatory, Garching, Germany</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_lam">Madeline Lam</a></div>
+  <div class="participant-affiliation">Trinity College, Dublin, Ireland</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_lodieu">Nicolas Lodieu [SOC]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_luhman">Kevin Luhman [INVITED]</a></div>
+  <div class="participant-affiliation">Pennsylvania State University, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_manjavacas">Elena Manjavacas [INVITED]</a></div>
+  <div class="participant-affiliation">ESA/AURA Astronomer at Space Telescope Science Institute, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_martin">Eduardo Martín [SOC]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_mccarthy">Allison McCarthy</a></div>
+  <div class="participant-affiliation">Trinity College, Dublin, Ireland</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_metchev">Stanimir Metchev</a></div>
+  <div class="participant-affiliation">University of Western Ontario London, Ontario, Canada</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_mohandasan">Anjana Mohandasan</a></div>
+  <div class="participant-affiliation">Institute UTINAM, University of Besancon, France</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_munoz_torres">Sara Muñoz Torres [LOC]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_nasedkin">Evert Nasedkin</a></div>
+  <div class="participant-affiliation">Trinity College, Dublin, Ireland</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_olivares">Javier Olivares [INVITED]</a></div>
+  <div class="participant-affiliation">UNED, Madrid, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_panwar">Neelam Panwar</a></div>
+  <div class="participant-affiliation">Aryabhatta Research Institute of Observational Sciences, India</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_parsons">Steven Parsons</a></div>
+  <div class="participant-affiliation">University of Sheffield, UK</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_perez_garrido">Antonio Pérez-Garrido [INVITED]</a></div>
+  <div class="participant-affiliation">Universidad Politécnica de Cartagena, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_pike">Eleanor Pike</a></div>
+  <div class="participant-affiliation">University of Sheffield, UK</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_rackham">Benjamin V. Rackham</a></div>
+  <div class="participant-affiliation">MIT, Cambridge, MA, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_rebolo">Rafael Rebolo [INVITED]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_reyle">Céline Reylé [INVITED]</a></div>
+  <div class="participant-affiliation">Besançon Observatory, Besançon, France</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_rom">Tamara Rom</a></div>
+  <div class="participant-affiliation">University of Split, Faculty of Science, Split, Croatia / Universite Grenoble Alpes, IPAG, France
+</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_schrader">Merle Anna Schrader</a></div>
+  <div class="participant-affiliation">Trinity College, Dublin, Ireland</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_sedighi">Nafise Sedighi [LOC]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_smart">Richard Smart</a></div>
+  <div class="participant-affiliation">Ossevatorio Astrofisico di Torino, INAF, Italy</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_solano">Enrique Solano [INVITED]</a></div>
+  <div class="participant-affiliation">Centro de Astrobiología, Madrid, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_tan">Xianyu Tan [INVITED]</a></div>
+  <div class="participant-affiliation">Shanghai Jiao Tong University, China</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_tata">Ramarao Tata [INVITED]</a></div>
+  <div class="participant-affiliation">Ohio University, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_tsilia">Styliani Tsilia [LOC]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_utsumi">Shusuke Utsumi</a></div>
+  <div class="participant-affiliation">Nagoya University, Japan</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_vale">Afonso Manuel Ribeiro Guerreiro do Brito do Vale</a></div>
+  <div class="participant-affiliation">Laboratoire 'Astrophysique de Bordeaux, France</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_vega_aguilera">Maximiliano Dirk Vega Aguilera</a></div>
+  <div class="participant-affiliation">University of Hertfordshire, Uk</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_vitas_ml">Nikola Vitas [SOC]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_wagner">Kevin Wagner</a></div>
+  <div class="participant-affiliation">University of Arizona, Tucson, Arizona, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_weible">Gabriel Weible</a></div>
+  <div class="participant-affiliation">University of Arizona, Tucson, Arizona, USA</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_yates">Amalie Yates</a></div>
+  <div class="participant-affiliation">University of Sheffield, UK</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_zapatero_osorio">María Rosa Zapatero Osorio [INVITED]</a></div>
+  <div class="participant-affiliation">Centro de Astrobiología, Madrid, Spain</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_zhang">Jerry J.-Y. Zhang</a></div>
+  <div class="participant-affiliation">Western University, Ontario, Canada</div>
+</div>
+<div class="participant-row">
+  <div class="participant-name"><a href="program.html?expand=true#card_zerjal">Marusa Žerjal [SOC]</a></div>
+  <div class="participant-affiliation">IAC, Tenerife, Spain</div>
+</div>
+  </div>
+
+    </main>
+    <footer>
+      <div class="container"><center>
+       <a href="https://www.iac.es"><img src="sponsors/logo_iac.svg" height="80"></a>&nbsp;&nbsp;&nbsp;<a href="https://research.iac.es/proyecto/substellar/"><img src="sponsors/logo_substellar.svg" height="80"></a>&nbsp;&nbsp;&nbsp;<a href="https://erc.europa.eu/"><img src="sponsors/LOGO_ERC-FLAG_EU.png" height="80"></a>
+       </br></br>
+       Contact organizing commitee: <a href="mailto:substellar@iac.es">substellar@iac.es</a>
+       </center></br>
+        &copy; SUBSTELLAR ASTROPHYSICS
+      </div>
+    </footer>
+    </body>
+    </html>

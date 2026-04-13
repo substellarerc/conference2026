@@ -55,7 +55,220 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <title>SUBSTELLAR ASTROPHYSICS</title>
       <link rel="stylesheet" href="assets/styles.css">
-    </head>
+
+<style>
+/* Program page styles without Bootstrap */
+body {
+  background: #f8f9fa;
+}
+
+main.container > h1 {
+  margin-top: 0;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  cursor: pointer;
+  background: white;
+  color: #212529;
+}
+
+.btn:hover {
+  filter: brightness(0.98);
+}
+
+.btn-primary {
+  background: #0d6efd;
+  border-color: #0d6efd;
+  color: white;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+.btn-outline-primary {
+  background: white;
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+.accordion {
+  width: 100%;
+}
+
+.accordion-item {
+  margin-bottom: 0.75rem;
+}
+
+.accordion-header {
+  margin: 0;
+}
+
+.accordion-button {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0 1.5rem 0 0;
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: inherit;
+  position: relative;
+  cursor: pointer;
+}
+
+.accordion-button::after {
+  content: "▾";
+  position: absolute;
+  right: 0;
+  top: 0.05rem;
+  transition: transform 0.2s ease;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.accordion-button.collapsed::after {
+  transform: rotate(-90deg);
+}
+
+.accordion-collapse.collapse,
+.collapse {
+  display: none;
+}
+
+.accordion-collapse.collapse.show,
+.collapse.show {
+  display: block;
+}
+
+.accordion-body {
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.session-card {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.special-card {
+  background: #fffce8;
+  border-left: 4px solid #ced4da;
+}
+
+.time {
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.speaker {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.abstract {
+  font-size: 0.9rem;
+  color: #444;
+  margin-top: 10px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.section-title {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.moderators {
+  font-size: 0.88rem;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.session-block + .session-block {
+  margin-top: 16px;
+}
+
+@media print {
+  body {
+    background: white;
+    font-size: 11pt;
+  }
+  .btn {
+    display: none !important;
+  }
+  .accordion-collapse,
+  .collapse {
+    display: block !important;
+  }
+  .accordion-button::after {
+    display: none !important;
+  }
+  .session-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+}
+</style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+/* Restore blue date headers */
+.accordion-button {
+  background: #cfe2ff;
+  border-radius: 0.375rem;
+  padding: 0.6rem 2.2rem 0.6rem 0.9rem;
+}
+
+.accordion-button:hover {
+  background: #cfe2ff;
+}
+
+.accordion-button::after {
+  top: 0.65rem;
+  right: 0.9rem;
+}
+</style>
+
+</head>
     <body>
     <header>
   <div class="container">
@@ -63,9 +276,9 @@
       <a href="index.html"><strong>SUBSTELLAR ASTROPHYSICS</strong></a>
       <div style="flex:1"></div>
       <a href="index.html"><img src='home.png' height='15'></a>
+      <a href="participants.html">Participants</a>
       <a href="program.html">Program</a>
-      <a href="speakers.html">Speakers</a>
-      <a href="registration.html">Registration</a>
+<!--      <a href="registration.html">Registration</a>-->
       <a href="venue.html">Venue</a>
       <a href="travel.html">Travel</a>
       <a href="eclipse.html">Eclipse</a>
@@ -75,27 +288,729 @@
   </div>
 </header>
 
+
     <main class="container">
-      <h1>Program (NOT YET)</h1>
-      <p>The program will be published after the registration is complete.</p>
+      <h1>Preliminary Program</h1>
+<div class="text-center toolbar">
+    <button class="btn btn-primary" onclick="expandAll()">Expand all abstracts</button>
+    <button class="btn btn-secondary" onclick="collapseAll()">Collapse all</button>
+<!--     <button class="btn btn-success" onclick="window.print()">Export PDF</button> -->
+  </div>
 
-      <h2>Day 1 (Monday, August 10) — Session I & II</h2>
-   <!--   <ul>
-        <li>09:00 — Opening remarks</li>
-        <li>09:30 — Keynote: Brown dwarf atmospheres</li>
-        <li>10:15 — Coffee break</li>
-      </ul>-->
+  <div class="accordion" id="program">
+    <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#day1">August 10</button>
+  </h2>
+  <div id="day1" class="accordion-collapse collapse show">
+    <div class="accordion-body">
+      <div class="session-block">
+  <div class="section-title">Opening</div>
 
-      <h2>Day 2 (Tuesday, August 11) — Session III & IV</h2>
-<!--       <p>Poster session and panel discussion.</p> -->
+  <div class="session-card special-card">
+  <div class="time">16:00 – 16:30</div>
+  <div class="title">Welcome</div>
+  <div class="speaker">LOC &amp; SOC chairs</div>
+</div>
+</div><div class="session-block">
+  <div class="section-title">Session I: Substellar Direct Detection methods</div>
+  <div class="moderators">Moderators: Elena Manjavacas &amp; Stanimir Metchev</div>
+  <div class="session-card"  id="card_luhman">
+  <div class="time">16:30 – 17:00</div>
+  <div class="title">JWST Surveys for Brown Dwarfs in Star-forming Regions</div>
+  <div class="speaker">Kevin Luhman</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_luhman">
+    Abstract
+  </button>
+  <div id="abs_luhman" class="collapse abstract"> I will review the results of JWST surveys for brown dwarfs in star-forming regions, both near and far, with an emphasis on the latest observations in two of the richest nearby star-forming clusters, IC 348 and the Orion Nebula Cluster.  I will discuss JWST's constraints on the shape and minimum mass of the substellar IMF in these clusters, and the detection of  an unidentified aliphatic hydrocarbon in the faintest and coolest cluster members, which forms the basis of a newly proposed spectral class.</div>
+</div>
+<div id="card_fu" class="session-card">
+  <div class="time">17:00 – 17:20</div>
+  <div class="title">Color sequence of JWST transiting and directly imaged exoplanet and brown dwarf populations</div>
+  <div class="speaker">Guangwei Fu</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_fu">
+    Abstract
+  </button>
+  <div id="abs_fu" class="collapse abstract">Transiting and directly imaged planets and brown dwarfs share fundamental atmospheric properties, being H/He dominated bodies with trace metals in a similar temperature regime. Despite these first-order similarities, distinct observational techniques have historically separated their study into separate communities. In this work, we bridge this divide by compiling a comprehensive library of JWST emission spectra, comprising all published hot Jupiter eclipses ($\sim$13 objects) and over 50 directly imaged brown dwarfs. Our sample spans temperatures of $\sim$600-2500 K and surface gravities (log g) of $\sim$2.5-5.5. We uniformly process these spectra to derive synthetic photometry in standard J and K bands, as well as five custom NIRCam filters targeting key H2O, CH4, CO2, and CO absorption features and the continuum. Comparing these color sequences to atmospheric model grids reveals four key insights. (1) Hot Jupiters with non-inverted atmospheres (T <$\sim$ 2000 K) exhibit dayside infrared colors remarkably similar to young, low-gravity brown dwarfs, following the extension of the L-dwarf sequence in the J-K color-magnitude diagram with no clear L-T transition down to J $\sim$16. (2) Using the 3.3 micron CH4 feature, we empirically map the onset of methane across temperature and gravity space. We find that methane absorption is strongly gravity-dependent: the onset occurs at $\sim$1400 K for field brown dwarfs (log g $\sim$ 5.5), but is delayed to $\sim$1200 K for young brown dwarfs (log g $\sim$ 4) and $\sim$800 K for hot Jupiters (log g $\sim$ 3). (3) Utilizing relative CO2-to-CO colors as a metallicity probe, we find that hot Jupiters and planetary-mass companions display deeper CO2 absorption than field brown dwarfs. Models suggest this feature is consistent with modest metal enhancement ($\sim$0.5 dex), reflecting enrichment during formation within a protoplanetary disk. In summary, we demonstrate that temperature and surface gravity are the universal, first-order parameters shaping planet/substellar atmospheres, prevailing over the origin of the energy budget (irradiation vs. internal cooling) or day-night advection. This unification shows that the study of irradiated and self-luminous objects can inform each other. Transiting planets provide the precisely measured mass and radius needed to anchor the physics of the L-T transition, while the high signal-to-noise spectra of brown dwarfs offer the detailed chemical and cloud benchmarks necessary to interpret their transiting counterparts.</div>
+</div>
+<div id="card_zerjal" class="session-card">
+  <div class="time">17:20 – 17:40</div>
+  <div class="title">Photometric properties of Ultracool Dwarfs in Euclid</div>
+  <div class="speaker">Marusa Zerjal</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_zerjal">
+    Abstract
+  </button>
+  <div id="abs_zerjal" class="collapse abstract">The wealth of data from the Euclid space telescope represents a major resource not only for cosmological studies but also for ultracool dwarf (UCD) science. In its first major data release DR1, scheduled for later this year, we expect to detect almost 200,000 photometric UCD candidates spanning from late M to late T spectral types. This catalogue will mark a significant transition in substellar science, opening the door to the era of big data, and will facilitate the development of robust photometric standards. In this presentation, I will discuss the photometric catalogue of UCDs in Euclid and explore their photometric properties.</div>
+</div>
+<div class="session-card" id="card_dominguez">
+  <div class="time">17:40 – 18:00</div>
+  <div class="title">Spectroscopic search, classification and analysis of ultracool dwarfs in Euclid Q1 data [ONLINE]</div>
+  <div class="speaker">Carlos Domínguez</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_dominguez">
+    Abstract
+  </button>
+  <div id="abs_dominguez" class="collapse abstract">We present our work on Euclid Q1 spectroscopic data to identify L- and T-type dwarfs from direct identification through the H2O and CH4 absorption bands. We confirm also the ultracool dwarf nature of more than 160 candidates from the photometric catalogs prepared by our group. We present the first spectral analysis of confirmed ultracool dwarfs from Q1 data, including spectral classifications, determination of effective temperatures, H2O, CH4 and NH3 spectral indices, and measurements of the KI absorption doublet.</div>
+</div>
+<div class="session-card special-card">
+  <div class="time">18:00 – 18:20</div>
+  <div class="title">Coffee break</div>
 
-      <h2>Day 3 (Wednesday, August 12) — Session V, The solar eclipse</h2>
+</div>
+<div id="card_lodieu" class="session-card">
+  <div class="time">18:20 – 18:40</div>
+  <div class="title">JWST infrared spectroscopy of the nearest metal-poor brown dwarf, WISEJ181005.5−101002.3</div>
+  <div class="speaker">Nicolas Lodieu</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_lodieu">
+    Abstract
+  </button>
+  <div id="abs_lodieu" class="collapse abstract">WISE~J181005.5$-$101002.3 (WISE1810) is the nearest dwarf to the Sun with a metallicity below $-1.0$\,dex, hence a key reference for the study of the population of metal-poor very low-mass and brown dwarfs. We analysed the infrared spectra obtained with the NIRSpec and MIRI instruments on-board James Webb Space Telescope (JWST) to complement previous optical and infrared ground-based datasets. We compared these spectra with other metal-poor low-mass and substellar objects with space-based data. We revised its physical parameters. Its bolometric luminosity is $-6.07 \pm 0.06$\,dex, yielding a radius of $0.097 \pm 0.015\,R_{\mathrm{Jup}}$ and a mass of $25$--$65\,M_{\mathrm{Jup}}$. The radial velocity is small, yielding a 3D space motion typical of the thick disk of our Galaxy. We report a clear detection of CH$_4$ fundamental band at 3.3\,microns and a broad depression due to NH$_3$ around 10.5\,microns, both pointing towards a metal-poor object with equilibrium chemistry. WISE1810 is a metal-poor brown dwarf with most likely equilibrium chemistry and kinematics of an old object.</div>
+</div>
+<div id="card_solano" class="session-card">
+  <div class="time">18:40 – 19:10</div>
+  <div class="title">Identification and Characterization of Very Low Mass Objects using the Virtual Observatory</div>
+  <div class="speaker">Enrique Solano</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_solano">
+    Abstract
+  </button>
+  <div id="abs_solano" class="collapse abstract">Virtual Observatory (VO) tools and services enable the efficient discovery and characterization of low and very low mass objects by exploiting large multi-wavelength archives in a homogeneous and reproducible way. Using VO-based workflows—catalogue cross-matching, multi-band SED construction, proper-motion filtering, and photometric classification— it is possible to identify and characterize large samples of cool and ultracool objects, both single and binary systems, in wide and deep surveys.  Looking ahead, the Euclid mission will be transformative for this field. Its combination of wide-area near-infrared imaging and slitless spectroscopy, together with exquisite photometric depth, will allow the detection of ultracool dwarfs and VLM objects at unprecedented distances and in previously unexplored regions of parameter space. Given the enormous data volume expected from Euclid, the use of artificial intelligence techniques will be not only beneficial, but essential to efficiently identify, classify, and characterize low- and very low-mass objects.  In this presentation, I will summarize the collaborative work carried out by the Spanish VO in this field over the last few years.</div>
+</div>
 
-      <h2>Day 4 (Thursday, August 13) — Session VI & VII</h2>
+<div id="card_vega_aguilera" class="session-card">
+  <div class="time">19:10 – 19:30</div>
+  <div class="title">Combining ground-based observations and Gaia DR3 observations</div>
+  <div class="speaker">Maximiliano Dirk Vega Aguilera</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_vega_aguilera">
+    Abstract
+  </button>
+  <div id="abs_vega_aguilera" class="collapse abstract">We present a new open-source  designed to calculate high-precision astrometric solutions. This software utilizes reference stars from the Gaia Data Release 3 catalog to calibrate the astrometry of ground-based observations. We demonstrate the software's capability by presenting astrometric solutions for several brown dwarfs. In particular, we show results with a 20-year time baseline, obtained from infrared images observed with the New Technology Telescope (NTT). Our software's main capability is the seamless integration of observations from various telescopes. A prime example is the merging of NTT epoch astrometry with Gaia epoch data, anticipated in the next Gaia Data Release 4. This combination improves the astrometric precision and extends the time baseline of the resulting solutions, helping to disentangle the proper motion contribution to the solution residuals, and allowing a better analysis on binary systems. This advancement is crucial for the long-term analysis of proper motions and parallaxes for substellar objects. Combining Gaia data with ground-based observations is crucial for two main reasons. Firstly, it provides necessary solutions for sources where the Gaia data is not enough to obtain solutions. Secondly, it allows for the refinement of solutions for objects where Gaia reports significant errors. Future versions of the software will be extended to include EUCLID and LSST observations.</div>
+</div>
+<div id="card_smart" class="session-card">
+  <div class="time">19:30 – 20:00</div>
+  <div class="title">Unveiling the Substellar Regime through Precision Astrometry</div>
+  <div class="speaker">Richard Smart</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_smart">
+    Abstract
+  </button>
+  <div id="abs_smart" class="collapse abstract">Characterizing brown dwarfs and ultra-cool dwarfs (UCDs) is inherently challenged by the mass-age-luminosity degeneracy, where non-fusing objects of different ages and masses can appear identical in brightness. This paper demonstrates that precision astrometry is one of the primary tools for breaking this degeneracy. By securing precise trigonometric parallaxes, we can uniquely link atmospheric parameters to absolute bolometric luminosities, providing the necessary anchors for theoretical evolutionary models.
 
-      <h2>Day 5 (Friday, August 14) — Session VIII, Round table</h2>
+  The core of this methodology relies on the powerful synergy between multi-epoch archival data and next-generation surveys. Utilizing binary systems, integrating data from LSST and Euclid with archival ground-based observations and diffraction-limited near-infrared imaging will provide a comprehensive, multi-epoch census of the Local Volume provides the statistical weight required to calibrate the substellar Initial Mass Function (IMF). Ultimately, these astrometric methods provide a robust framework for determining the fundamental parameters of the substellar population.</div>
+</div>
+<div id="card_martin" class="session-card">
+  <div class="time">20:00 – 20:20</div>
+  <div class="title">Substellar Astrophysics in the Euclid era</div>
+  <div class="speaker">Eduardo Martín</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_martin">
+    Abstract
+  </button>
+  <div id="abs_martin" class="collapse abstract">Only three years after its launch, the ESA-led Euclid space mission has enabled the discovery of hundreds of Substellar objects in nearby star-forming regions, young open clusters and the field. Here I will summarize those results and will ponder on what is to come until the end of the mission and beyond with future missions such as Gaia-NIR.</div>
+</div>
+<div class="session-card special-card">
+  <div class="time">20:30 – 22:00</div>
+  <div class="title">Welcome cocktail</div>
 
+</div>
+</div>
+    </div>
+  </div>
+</div><div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#day2">August 11</button>
+  </h2>
+  <div id="day2" class="accordion-collapse collapse">
+    <div class="accordion-body">
+      <div class="session-block">
+  <div class="section-title">Session II: Ultracool Atmospheres</div>
+  <div class="moderators">Moderators: Kevin Luhman &amp; Marusa Zerjal</div>
+<div id="card_manjavacas" class="session-card">
+  <div class="time">10:00 – 10:30</div>
+  <div class="title">Spectrophotometric Variability of Substellar Objects</div>
+  <div class="speaker">Elena Manjavacas</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_manjavacas">
+    Abstract
+  </button>
+  <div id="abs_manjavacas" class="collapse abstract">Not yet.</div>
+</div>
+<div id="card_nasedkin" class="session-card">
+  <div class="time">10:30 – 10:50</div>
+  <div class="title">Atmospheric retrievals of emission spectra in the era of JWST</div>
+  <div class="speaker">Evert Nasedkin</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_nasedkin">
+    Abstract
+  </button>
+  <div id="abs_nasedkin" class="collapse abstract">The era of JWST has seen extraordinary developments in the resolution, wavelength coverage, and signal-to-noise ratio available to study the atmospheres of brown dwarfs and directly imaged exoplanets. This has led to a paradigm shift where we are no longer limited by the quality of the available data, but rather by the models we use to interpret the observations. Atmospheric retrievals have emerged as a critical tool to measure fundamental atmospheric parameters, even as there remains debate around how to interpret their outputs. In this talk, I will present the state-of-the-art in atmospheric retrievals of emission spectra. As case studies I will present preliminary results of retrievals of new JWST/NIRSpec/G235 H data of the benchmark system of four directly imaged exoplanets, HR 8799. I will also demonstrate the first extension of retrievals to the time-domain using the example of the variable T2.5 dwarf SIMP-0136. However, even the most advanced retrievals still struggle to adequately fit JWST data. Therefore I will also discuss the current limitations of this approach, together with the advances in modelling these atmospheres that will ultimately be required in order to fully exploit JWST spectra.</div>
+</div>
+<div id="card_metchev" class="session-card">
+  <div class="time">10:50 – 11:10</div>
+  <div class="title">The emerging observational picture of dust clouds in brown dwarf atmospheres</div>
+  <div class="speaker">Stanimir Metchev</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_metchev">
+    Abstract
+  </button>
+  <div id="abs_metchev" class="collapse abstract">Dust clouds have been theorized in the atmospheres of brown dwarfs since the 1990's. They are the favoured mechanism to account for the increasingly red spectra of L-type dwarfs at decreasing temperatures, while patchiness in the cloud cover can explain the ubiquitous photometric variability of brown dwarfs. However, dust clouds have also posed a conundrum around the L-to-T spectral type transition, wherein their presumed sedimentation from the atmosphere occurs too rapidly, over an unexpectedly narrow 1200-1300 K range. Observationally, late-L and early-T dwarfs span a wide range of colours and spectral morphology, which atmospheric models struggle to self-consistently fit into a cooling sequence.   The conundrum is now being resolved through direct spectroscopy of the 8-11 micron silicate absorption signature of dust clouds. The absorption strength is seen to correlate with the spin axis inclination of L dwarfs. L dwarfs viewed at near-equatorial latitudes display stronger absorption than L dwarfs viewed closer to pole-on. This has revealed a novel result: equatorial latitudes are cloudier and redder than the poles. This may explain the scatter in the observational properties of brown dwarfs as a viewing geometry effect. On-going spectroscopy with JWST is further probing the effects of substellar age and metallicity in this picture, as archival Spitzer spectra already point to a range of silicate dust mineralogies.</div>
+</div>
+  <div class="session-card" id="card_tan">
+  <div class="time">11:10 – 11:40</div>
+  <div class="title">Atmospheric Variability of Substellar Objects: A Modeling Perspective</div>
+  <div class="speaker">Xianyu Tan</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_tan">
+    Abstract
+  </button>
+  <div id="abs_tan" class="collapse abstract">The atmospheres of most brown dwarfs (BDs) and directly imaged exoplanets are sculpted by their internal heat flux, making them valuable testbeds for understanding self-luminous climates. Variability is common, with a small fraction exhibiting exceptionally large amplitudes. James Webb Space Telescope (JWST) spectroscopic time-series observations are driving further breakthroughs. Our recent theoretical development suggests cloud radiative feedback leads to a self-sustained dynamical system, generating large-scale turbulence and traveling waves in the atmospheres that produce rotational variability. The resulting light-curve morphologies and amplitudes are broadly consistent with some observations. In this talk, I present recent modeling efforts exploring how planetary rotation rate—a key parameter governing atmospheric circulation—influences cloud structure and chemical mixing. I demonstrate that rotation substantially impacts the thermal spectra, color-magnitude diagrams, and light-curve behaviors of these objects. Finally, I present models for several well-observed objects, including VHS 1256b (the most variable BD) and Luhman 16B (possessing the longest light curve), comparing them to observations to illustrate the applicability of our models. </div>
+</div>
+<div id="card_sedighi" class="session-card">
+  <div class="time">11:40 – 12:00</div>
+  <div class="title">Characterizing Ultracool Dwarfs in the Euclid Era with ATMO Models</div>
+  <div class="speaker">Nafise Sedighi</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_sedighi">
+    Abstract
+  </button>
+  <div id="abs_sedighi" class="collapse abstract">A close integration between observational data and atmospheric modeling is essential for analyzing substellar objects and improving the models themselves. Here, we present an updated grid of ATMO2020 atmospheric models for ultracool dwarf objects. The models compute temperature--pressure profiles and emergent spectra for atmospheres in both radiative--convection equilibrium and non-equilibrium chemistry. The model grid includes effective temperatures ranging from 200 to 3000\,K and surface gravities from $\log(g) = 2.5$ to $5.5$. We also extend the metallicity range to $-1.5 \leq [\mathrm{M}/\mathrm{H}] \leq +0.5$ and add extra opacities, such as MgO and SiO, which enhance the models, especially at sub-solar metallicities. We apply these models to the Euclid DR1 data of spectroscopically confirmed ultracool dwarfs (M7--T7). The comparison between the models and the Euclid data yields robust results in determining effective temperature, surface gravity, and atmospheric composition, particularly for late-T-type objects. We show that the metallicity and gravity of the sample are spread across all values, with most objects near solar metallicity and $\log(g) = 4$. The wavelength coverage and updated metallicity range and opacities make the models suitable for large survey datasets such as Euclid.</div>
+</div>
 
+<div  class="session-card special-card">
+  <div class="time">12:00 – 12:30</div>
+  <div class="title">Coffee break</div>
+
+</div>
+<div id="card_ardevol_martinez" class="session-card">
+  <div class="time">12:30 – 12:50</div>
+  <div class="title">Atmospheric retrievals on the full JWST spectrum of an Y dwarf</div>
+  <div class="speaker">Francisco Ardévol Martínez</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_ardevol_martinez">
+    Abstract
+  </button>
+  <div id="abs_ardevol_martinez" class="collapse abstract">For the first time, JWST is opening a window into the atmospheres of the lowest-mass end of the star-formation process, revealing the full 0.6–18 $\mu$m spectra of the coldest known brown dwarfs. At the same time, the sheer information content of this data poses a formidable modeling challenge. WISEPA J182831.08+265037.8 (or WISE 1828 for short) is a $\sim$ 400 K Y-type brown dwarf, initially  considered the archetype of its spectral class. Prior to JWST, consensus could not be reached on its characterization; no atmospheric model could simultaneously reproduce its near-infrared HST spectrum and its WISE/Spitzer photometry. Some suggested WISE 1828 was an unresolved binary while others suggested it could be showing the chemical signatures of a runaway planet. In this work, we present atmospheric retrievals on the full-resolution, complete 0.6–18 $\mu$m JWST spectrum for the first time. Our approach is enabled by a novel machine-learning–based inference framework designed to handle the dimensionality and complexity of this type of dataset. Fitting both the JHK infrared data along with the MIRI data remains problematic. The tension between model and observation point to missing or inadequately treated physical processes in current ultracool atmospheric models. Although this undermines the robustness of inferred bulk properties—particularly mass, radius, and therefore age—the retrieved chemical abundances are comparatively stable across modeling attempts. Whether these abundance patterns are physical or symptomatic of model deficiencies remains an open question.  This work adds a new piece in the puzzle of this enigmatic object and places it in context alongside the population of the coldest worlds observed by JWST. Are these modeling challenges ubiquitous among Y dwarfs or does WISE 1828 truly stand in a league of its own?</div>
+</div>
+<div id="card_calamari" class="session-card">
+  <div class="time">12:50 – 13:10</div>
+  <div class="title">Connecting the Atmospheres of the Coldest Worlds and Hottest Planets</div>
+  <div class="speaker">Emily Calamari</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_calamari">
+    Abstract
+  </button>
+  <div id="abs_calamari" class="collapse abstract">In the era of JWST, it is now possible to look into substellar atmospheres in unparalleled detail and precision.  With exquisite JWST NIRSpec or MIRI data in hand, atmospheric retrievals are a leading data-driven tool that can recover an extrasolar world’s fundamental parameters such as mass, radius, effective temperature, gravity, cloud structure and chemical abundances. However, there is one clear atmospheric phenomenon that confounds all modeling attempts: the overall impact of clouds on observational properties. To break model degeneracies largely brought on by issues with clouds, several works have shown the power that main sequence star–brown dwarf companion systems have when the host star can anchor metallicity, age, and abundance measurements for its substellar companion. In this work, we bring together insight from brown dwarf atmospheric theory and our own Solar system to recently published giant exoplanet analyses. We will show the results of a re-examination of the retrievals for HD 189733 b, WASP-107 b, WASP-17 b and WASP-39 b –  four JWST-observed Hot Jupiters – using host star abundances for context. We ground our re-analyses using the respective host star chemistry to benchmark the retrieved chemistry and silicate cloud solutions (i.e. enstatite; MgSiO$_3$, forsterite; Mg$_2$SiO$_4$, and/or quartz; SiO$_2$). In applying analytical techniques used in companion brown dwarf studies, we find confirmation that giant exoplanets form and accrete in the outer protoplanetary disk, thus inheriting their host star Mg/Si ratio. This talk aims to discuss this work in detail and highlight the importance that brown dwarf literature plays in understanding giant exoplanet formation and evolution.</div>
+</div>
+<div id="card_barkaoui" class="session-card">
+  <div class="time">13:10 – 13:40</div>
+  <div class="title">What we can learn from transiting BDs</div>
+  <div class="speaker">Khalid Barkaoui</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_barkaoui">
+    Abstract
+  </button>
+  <div id="abs_barkaoui" class="collapse abstract">The search for exoplanets in recent decades has also deepened our understanding of brown-dwarfs (BDs). BDs are defined as substellar objects between giant planets ($\sim$0.012\,$M_{\odot}$) and stars ($\sim$0.08\,$M_{\odot}$), with radii ranging from $\sim$0.07\,$R_{\odot}$ to $\sim$0.14\,$R_{\odot}$. But these traditional boundaries of BDs are approximate and can be affected by other factors such as metallicity. Some BDs models predicted that a BD can be as massive as 81.7\,$M_{\mathrm{Jup}}$ under specific conditions such as the absence of atmospheric clouds and low metallicity. For this reason, the study of the transiting BDs (around M-dwarfs) can contribute to understand in detailed the formation and evolution mechanisms. Only $\sim$10 BDs have been discovered around M-dwarfs. More detections of BDs are needed to be able to confront observations to theoretical expectations. In this talk, I will present highlight some M-dwarf---Brown-dwarf systems discovered by the TESS space mission.</div>
+</div>
+<div id="card_rackham" class="session-card">
+  <div class="time">13:40 – 14:00</div>
+  <div class="title">From Cool Stars to Planetary Atmospheres: Early Results from NASA’s Pandora SmallSat Mission</div>
+  <div class="speaker">Benjamin V. Rackham</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_rackham">
+    Abstract
+  </button>
+  <div id="abs_rackham" class="collapse abstract">Cool K- and M-dwarf stars—at the boundary with the substellar regime—exhibit complex, time-variable photospheres shaped by magnetic activity and atmospheric inhomogeneities that redistribute flux across visible and near-infrared wavelengths. These processes imprint stellar signals in planetary transmission spectra, linking cool-star atmospheric physics directly to exoplanet characterization. NASA’s Pandora SmallSat Mission, launched in January 2026, is designed to address the challenge of disentangling these signals with a 0.45-m telescope that delivers simultaneous visible (0.4–0.7 $\mu$m) photometry and low-resolution near-infrared (0.9–1.6 $\mu$m; R=120) spectroscopy of transiting exoplanet systems, collected with long time baselines and over multiple epochs. By enabling constraints of spot filling factors, temperature contrasts, and rotational variability in K- and M-dwarf photospheres, Pandora constrains both stellar and planetary spectral signals and reduces biases in inferred exoplanet atmospheric properties. Here we present an overview of the mission and early science results from commissioning and first survey targets, highlighting representative stellar spectroscopic time-series and exoplanet transmission spectra that show how time-resolved spectro-photometric monitoring breaks degeneracies intrinsic to single-epoch observations. Pandora’s dedicated survey of 20 Earth- to Jupiter-sized planets around cool dwarfs complements HST and JWST spectroscopy and provides a physically grounded framework for robust atmospheric characterization of both low-mass stars and their planets.</div>
+</div>
+<div  class="session-card special-card">
+  <div class="time">14:00 – 16:30</div>
+  <div class="title">Lunch break</div>
+
+</div>
+<div id="card_zapatero_osorio" class="session-card">
+  <div class="time">16:30 – 17:00</div>
+  <div class="title">Polarization of giant exoplanets</div>
+  <div class="speaker">María Rosa Zapatero Osorio</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_zapatero_osorio">
+    Abstract
+  </button>
+  <div id="abs_zapatero_osorio" class="collapse abstract">We present the detection of linear polarization at optical wavelengths from a close-in giant planet and its dependence on wavelength. This allowed us to measure the geometric albedo, finding a value higher than those reported for similar planets in the literature and a clear wavelength dependence previously not reported.</div>
+</div>
+<div id="card_zhang" class="session-card">
+  <div class="time">17:00 – 17:30</div>
+  <div class="title">High dispersion IR Spectroscopic Library for UCD: Rotation and Inclination</div>
+  <div class="speaker">Jerry J.-Y. Zhang</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_zhang">
+    Abstract
+  </button>
+  <div id="abs_zhang" class="collapse abstract">Using various instruments, including VLT/CRIRES, ESO 3.6m/NIRPS, Gemini/IGRINS-2, CFHT/ SPiRou and TNG/GIANO-B, we have built a comprehensive library of high-quality high-dispersion NIR spectra for hundreds of bright ultracool dwarfs. As a preliminary project, combining with their rotational periods from photometric monitoring, we obtained their rotational speeds and inclinations. The results will be part of the target selection criteria for the future Canadian space mission Photometric Observations of Exoplanet Transits (POET).</div>
+</div>
+<div id="card_schrader" class="session-card">
+  <div class="time">17:30 – 17:50</div>
+  <div class="title">Isolating Drivers of Substellar Variability with the Novel Method of Principal Component Analysis</div>
+  <div class="speaker">Merle Anna Schrader</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_schrader">
+    Abstract
+  </button>
+  <div id="abs_schrader" class="collapse abstract">The free-floating, low-mass sub-stellar object SIMP-0136 is one of the best analogues for directly imaged exoplanets with a planetary mass, low surface gravity, and atmospheric properties comparable to those of young giant exoplanets. Its lack of a host star allows atmospheric variability to be studied without stellar contamination. SIMP-0136 is a bright T2.5 object that exhibits large-amplitude, wavelength-dependent variability, yet the physical drivers of this variability remain an open question. Recent JWST/NIRSpec PRISM time-series spectroscopy provides an unprecedented view of its spectral variability across a broad wavelength range. We present one of the first JWST-era studies to apply principal component analysis (PCA) as a data-driven framework for isolating mutually uncorrelated modes of atmospheric change. We find that the spectroscopic variability of SIMP-0136 is intrinsically low dimensional, with two principal components accounting for most of the observed variance. Without making prior assumptions about the target's atmosphere, we identify the two primary drivers of the observed variability: change in effective temperature and varying vertical cloud structure. We also map three extreme atmospheric states whose changing contributions over rotational phase reproduce the observed spectra, demonstrating that the variability can be understood as mixtures of distinct atmospheric conditions. Together, these results align with previous analyses of this dataset, while offering further insight into SIMP-0136's atmospheric evolution. We demonstrate that PCA is a computationally efficient framework for isolating the physical drivers of time-resolved spectroscopic variability and establish its applicability to current and upcoming JWST time-resolved observations of brown dwarfs and directly imaged exoplanets.</div>
+</div>
+<div id="card_pike" class="session-card">
+  <div class="time">17:50 – 18:10</div>
+  <div class="title">JWST Spectroscopy and Auroral Modelling of Warm UCD LSR J1835+3259</div>
+  <div class="speaker">Eleanor Pike</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_pike">
+    Abstract
+  </button>
+  <div id="abs_pike" class="collapse abstract">Auroral variability in ultracool dwarfs (UCDs) is recognised as a key source of optical and infrared modulation, yet its physical origin remains poorly understood. We present JWST/NIRISS-SOSS time-series spectroscopy of the M8.5 auroral UCD LSR J1835+3259, obtained to probe its wavelength-dependent rotational variability and the atmospheric processes underlying its infrared variability. Principal component analysis reveals the presence of two distinct surface features: one dominated by FeH modulation near 1 $\mu$m and another introducing additional variability across the H and K bands. Forward-modelling using model atmosphere grids fails to fit the average NIRISS spectrum, whereas a blended model comprising an M-dwarf photosphere and a cooler blackbody component provides a substantially improved fit. Meanwhile, the variations in the weighting of the two components also provides a good fit to the broadband variability seen within the NIRISS data. We interpret this mixture not as a literal cool surface region but as a proxy for auroral heating and non-equilibrium chemistry. By adding perturbations to PICASO model grids, we demonstrate that a combination of atmospheric heating and non-equilibrium chemistry can successfully mimic a blend of unperturbed photosphere and a blackbody, and that the presence of these effects may explain the unusual spectrum and variability of LSR J1835+3259.</div>
+</div>
+<div class="session-card special-card">
+  <div class="time">18:10 – 18:30</div>
+  <div class="title">Coffee break</div>
+
+</div>
+<div id="card_bull" class="session-card">
+  <div class="time">18:30 – 18:50</div>
+  <div class="title">Weather Report on Cool Planetary-Mass Brown Dwarf Ross 458c</div>
+  <div class="speaker">Jared Bull</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_bull">
+    Abstract
+  </button>
+  <div id="abs_bull" class="collapse abstract">Ross 458c is a planetary-mass (9-16 M\_Jup) T8 spectral type brown dwarf ($\sim$700 K). Prior studies suggest that the near-IR spectrum of Ross 458c is best described by cloudy models, in contrast to the expected clear atmospheres of such late-T dwarfs, with sulfide cloud formation proposed as the source of such features. Ross 458c has also been observed to be variable in the WFC3/G141 filter using HST (Manjavacas et al. 2019), also potentially explainable by inhomogeneous cloud cover. Prior time-series observations have lacked in wavelength range and simultaneous multi-wavelength observations, limiting the conclusions drawn regarding the dominant variability mechanism at play and presence of clouds. We present the results of JWST/NIRSpec + PRISM time-resolved spectroscopy of Ross 458c, observing at least one full rotation of the object covering 0.6-5.3 um to compare with the predictions outlined in Morley et al. (2014). Results reveal wavelength-dependent evolution and periods, suggesting multiple variability mechanisms or complex structure within its atmosphere. Comparison with previous epochs also suggest stability in the dominant variability mechanisms. Results from this work will provide guidance for understanding atmospheres for similar late-T dwarfs and exoplanets of similar effective temperatures.</div>
+</div>
+<div id="card_lam" class="session-card">
+  <div class="time">18:50 – 19:10</div>
+  <div class="title">Clouds at every angle: Using JWST to probe latitudinal cloud variation in young L dwarfs</div>
+  <div class="speaker">Madeline Lam</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_lam">
+    Abstract
+  </button>
+  <div id="abs_lam" class="collapse abstract">Silicate clouds are one of the defining features of L dwarfs that shape their emission spectra, and with the sensitivity of JWST, we can now probe their atmospheric structure like never before. Brown dwarf atmospheres vary globally, and equator-to-pole variations have previously been observed with cloudy equatorial bands and cyclonic poles. We present the first full JWST NIRSpec PRISM and MIRI LRS 0.6 - 14 micron spectra of six young L dwarf members of the AB Doradus moving group with known inclination angles to determine whether we can observe similar equator-to-pole trends. This is the first time a coeval brown dwarf sample has been studied in such depth, with a focus on investigating whether there are atmospheric trends dependent on viewing angle. With our JWST spectra, we construct near-complete spectral energy distributions of each object to estimate their physical parameters. We observe absorption of key molecules and the silicate absorption feature at 8 - 11 micron, which provides insight into the complex cloud structure of brown dwarfs. The shape of the silicate absorption feature varies dramatically within our sample confirming that objects viewed equator-on have deeper silicate absorption. However, W1741-46 is an outlier in our sample with an unusually strong silicate absorption given its near pole-on orientation, challenging our current theories. There is a correlation between the shape of the silicate absorption feature and inclination, suggesting latitudinal variations in cloud chemical composition. Our investigation into equator-to-pole variations of brown dwarf atmospheres is crucial for further developing three dimensional general circulation models.</div>
+</div>
+<div id="card_munoz_torres" class="session-card">
+  <div class="time">19:10 – 19:30</div>
+  <div class="title">Expanding the Substellar Census: New Binary Candidates from the Euclid Mission</div>
+  <div class="speaker">Sara Muñoz Torres</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_munoz_torres">
+    Abstract
+  </button>
+  <div id="abs_munoz_torres" class="collapse abstract">The census of substellar binaries is crucial for constraining formation models and improving our understanding of substellar physics. The Euclid mission, with its high-resolution imaging (VIS) and near-infrared spectrophotometry (NISP), offers a significant opportunity to expand this census. The present study conducts a systematic search for substellar companions using data from the Euclid mission.
+
+The methodology employed in this research consists of an initial cross-match with UCD catalogues and the identification of peculiar spectra indicative of unresolved multiplicity. These candidates are then subjected to a detailed color and spectral analysis to determine their nature. We will present the first results of this study, which include the characterization of new candidates, thereby demonstrating Euclid’s capacity to improve the substellar multiplicity function and identify complex systems.
+</div>
+</div>
+<div id="card_dupuy" class="session-card">
+  <div class="time">19:30 – 19:50</div>
+  <div class="title">Substellar Dynamical Mass+Age Benchmarks: Progress &amp; Precision, Validations &amp; Vexations</div>
+  <div class="speaker">Trent Dupuy</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_dupuy">
+    Abstract
+  </button>
+  <div id="abs_dupuy" class="collapse abstract">The strongest tests of substellar evolutionary models require measuring the fundamental parameters of mass and age. Mass can only be measured in the special, and relatively rare, cases of binary systems containing one or more brown dwarfs. I will review the great progress that has been made in recent years on masses enabled by Gaia astrometric accelerations, where the age can also be measured from stellar primary components. I will highlight in particular two of our newest results. One for the exceptional benchmark HR 7672 B, which has high-precision measurements of mass from astrometry and RVs (75.4$\pm$0.7 MJup) and age from Keck Planet Finder asteroseismology (2.6$\pm$0.5 Gyr). Its mass is near the theoretical H-fusion mass boundary, making it particularly sensitive to differences in model predictions. Secondly, I will present a test of substellar cooling at the youngest age yet, from a BD+BD binary in the $\beta$ Pictoris moving group. Its model-derived age is consistent with the well-established age of the $\beta$ Pic moving group (24$\pm$3 Myr), unlike the only other such test of models to date in the 45-Myr-old Argus moving group.  If selected for a talk, I will use this opportunity to publish an up-to-date compendium of mass and age measurements and perform a uniform analysis of model-derived properties (e.g., Teff, logg, Lbol) from the latest models (e.g., ATMO2020++, Diamondback), as my contribution to the proceedings of the conference in Astronomische Nachrichten.</div>
+</div>
+<div id="card_giovannini" class="session-card">
+  <div class="time">19:50 – 20:10</div>
+  <div class="title">Substellar companions and their satellites: instrumental detection limits [ONLINE]</div>
+  <div class="speaker">Ilaria Giovannini</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_giovannini">
+    Abstract
+  </button>
+  <div id="abs_giovannini" class="collapse abstract">Despite the discovery of over 6000 exoplanets and substellar companions, no natural satellite has been confirmed beyond our Solar System. This study investigates the potential for detecting satellite companions orbiting brown dwarfs and giant exoplanets. Satellites are objects essential for understanding the formation pathways and dynamical evolution of planetary systems in which they reside. The research analyzes a sample of brown dwarfs and giant exoplanets from NASA and ESA archives spatially resolved via direct imaging, that showed characteristics suitable for satellite detection through radial velocity (RV) technique. This is a cutting-edge technique, as it extracts the RV measure from the high resolution spectrum of the substellar companion itself, rather than the host star’s. We estimated detection limits for state-of-the-art instruments (CRIRES+ and HiRISE at the VLT) and future facilities (ANDES at the ELT), taking into account the substellar companion's mass, angular separation and contrast with the host star, and stellar contamination in the companion spectra. The results highlight our already available capabilities in detecting these unexplored objects around brown dwarfs.  In particular, the minimum reachable masses for satellite companions are on the order of 100-200 Earth masses for central objects with BD masses (20-40 MJ) at a separation of the satellite of 0.1 AU. The signal induced by these objects are indeed of the orders of 200-300 m/s. </div>
+</div>
+<div class="session-card special-card">
+  <div class="time">20:30 – 22:00</div>
+  <div class="title">Ultracool Wine &amp; Cheese Tasting</div>
+
+</div>
+</div>
+    </div>
+  </div>
+</div><div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#day3">August 12</button>
+  </h2>
+  <div id="day3" class="accordion-collapse collapse">
+    <div class="accordion-body">
+      <div class="session-block">
+  <div class="section-title">Session III: Multiplicity &amp; Planets</div>
+  <div class="moderators">Moderators: Trent Dupuy &amp; Maria Rosa Zapatero Osorio</div>
+  <div id="card_fontanive" class="session-card">
+  <div class="time">10:00 – 10:30</div>
+  <div class="title">Substellar Binaries</div>
+  <div class="speaker">Clemence Fontanive</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_fontanive">
+    Abstract
+  </button>
+  <div id="abs_fontanive" class="collapse abstract">Not yet.</div>
+</div>
+<div id="card_gaidos" class="session-card">
+  <div class="time">10:30 – 10:50</div>
+  <div class="title">A New Spin on M Dwarf Rotation and Multiplicity in the Hyades with TESS and Gaia</div>
+  <div class="speaker">Eric Gaidos</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_gaidos">
+    Abstract
+  </button>
+  <div id="abs_gaidos" class="collapse abstract">Age is the quintessential parameter for studying stellar and planet evolution. M dwarfs, the most numerous stars and most prolific hosts of temperate Earth-size planets, resist most age-dating methods. Only rotation and its proxies are considered viable age indicators among individual main sequence M dwarfs.  Studies of co-eval stars in stellar clusters with established ages are critical to calibrating this gyrochronology.   The proximity (47 pc) and age (600-700 Myr) of the Hyades cluster make it an important benchmark cluster in this context.  Kepler observed part of the cluster core during the K2 mission and rotation periods were derived for $\approx$120 M dwarfs.  These contain a transition from fast to slow rotation, with many rapid rotators showing signs of multiplicity.   Disks in binaries dissipate more rapidly and the contracting pre-main sequence stars can freely spin up.  However the relationship between rotation and multiplicity among Hyades M dwarfs is still poorly described because of the small number of established rotation periods and uncertainties in mass and multiplicity:  only a few percent of Hyades M dwarfs have previous archival adaptive optics (AO) imaging.  TESS has observed the entire cluster, including its halo and tidal tail, and the Gaia astrometry mission plus new Keck AO imaging allows us to expand the survey of confirmed M dwarf members with rotation periods and multiplicity information.  I present highlights of this study plus an exploration of the idea that rapid stellar rotation can be used as a signpost for unseen companions in the planetary-mass regime.</div>
+</div>
+<div id="card_weible" class="session-card">
+  <div class="time">10:50 – 11:10</div>
+  <div class="title">Hunting for Substellar Companions in the 112 Myr Pleiades Cluster with Direct Imaging</div>
+  <div class="speaker">Gabriel Weible</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_weible">
+    Abstract
+  </button>
+  <div id="abs_weible" class="collapse abstract">At an age of 112 $\pm$ 5 Myr, the Pleiades open cluster occupies an underexplored age regime for direct studies of substellar companions. The Pleiades are significantly older than most imaged planets (ages $\lesssim$50 Myr), yet young enough to test theoretical models of substellar atmospheric evolution. Despite their proximity ($\sim$140 pc) and large membership (>1000 star systems), no planets have been confirmed in the cluster, with only three high-mass brown dwarf companions ($\sim$55-68 MJup) imaged to date.  We present a novel high-contrast imaging program combining LBTI/LMIRcam L' imaging with VLT/SPHERE near-IR coronagraphy. We targeted six Pleiades stars with the strongest astrometric accelerations in the Hipparcos–Gaia Catalog of Accelerations not explained by known stellar binaries, testing the hypothesis that these signals trace unseen substellar companions. Our LBTI observations achieve sensitivity down to $\sim$8 MJup at $\gtrsim$30 au, opening a discovery space for new Pleiades substellar companions that can critically benchmark evolutionary models.  We also present detailed orbital and atmospheric characterization of the Pleiades substellar companion HII 1348B from our recently published LBTI/LMIRcam observations (Weible et al. 2025, AJ). With relative astrometry spanning 23 years, we fit the first orbital model for this $\sim$60-63 MJup brown dwarf, revealing a wide (a $\sim$ 140 au), highly eccentric (e $\sim$ 0.78) circumbinary orbit. Such high eccentricity suggests a stellar formation pathway and/or dynamical scattering with the inner binary. These results establish HII 1348B as a benchmark for testing evolutionary models at 112 Myr, demonstrating the potential of a modern Pleiades imaging survey.</div>
+</div>
+<div id="card_yates" class="session-card">
+  <div class="time">11:10 – 11:30</div>
+  <div class="title">Long-term eclipse time variations in white dwarf + brown dwarf binaries</div>
+  <div class="speaker">Amalie Yates</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_yates">
+    Abstract
+  </button>
+  <div id="abs_yates" class="collapse abstract">Long-term monitoring of eclipse time variations (ETVs) in binary systems can reveal a significant amount about the binary’s structure and environment, including the interior structures of the components, and whether a planetary system is present. This is particularly useful in white dwarf + brown dwarf (WD+BD) binaries, as the WD is faint enough to allow for the BD structure to be directly studied. Currently theories attribute these ETVs to either the presence of one or more circumbinary substellar companions, or the intrinsic complexity of the magnetic field structure of the non-WD component.   We present the first long-term study of ETVs in WD+BD binaries, alongside global analysis of properties with WD + M-class dwarfs using over a decade of high-speed photometry data. We find that there is a strong relationship between non-WD component mass and the level of observed variation, favouring the magnetic field structure theory. A clear change occurs near the substellar boundary, with WD+BD binaries showing no significant variations. Our results therefore suggest a fundamental difference in the magnetic field configuration between stellar and substellar objects, providing a novel method of further constraining the substellar boundary.</div>
+</div>
+<div id="card_parsons" class="session-card">
+  <div class="time">11:30 – 11:50</div>
+  <div class="title">Substellar objects in close binaries with white dwarfs</div>
+  <div class="speaker">Steven Parsons</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_parsons">
+    Abstract
+  </button>
+  <div id="abs_parsons" class="collapse abstract">Binary systems containing substellar objects with white dwarf companions are powerful laboratories for testing and understanding the fundamental properties and evolution of brown dwarfs and even planetary mass objects. Although rare, eclipsing examples of these binaries offer a unique opportunity to determine ultra-precise fundamental parameters for substellar objects, since the much smaller, but brighter, white dwarf effectively acts as a laser, yielding accurate radii to a precision of better than a few per cent! White dwarfs can also act as clocks, giving independent age measurements to help constrain evolutionary models of substellar objects. Moreover, these binaries allow us to investigate the properties of substellar objects in extreme environments. Irradiation from the much hotter white dwarf can cause substellar objects to glow on one hemisphere and are excellent analogues for hot Jupiters. Placing substellar objects close to a strong magnetic field from a white dwarf can also generate chromospheric emission. In this talk I will summarise our current observations and understanding of these fascinating binary systems and show how useful they are as probes of substellar astrophysics. Finally, I will also show how the substellar objects themselves are also useful for constraining the evolutionary history of these compact binaries and may hold the key to understanding how some of the most important astrophysical phenomena in the Universe (Type Ia supernova) are formed.</div>
+</div>
+<div id="card_householder" class="session-card">
+  <div class="time">11:50 – 12:10</div>
+  <div class="title">Mass Transfer Between Brown Dwarfs and M Dwarfs</div>
+  <div class="speaker">Aaron Householder</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_householder">
+    Abstract
+  </button>
+  <div id="abs_householder" class="collapse abstract">Mass transfer is a defining phase in the evolution of many close binaries, yet it has never before been observed between objects at or below the stellar--substellar boundary. Here, we present the discovery of an ultracompact binary, ZTF J0440+2325 (86.65 min), and a second candidate system, ZTF J1444+4820 (67.16 min), in which a brown-dwarf donor transfers mass onto a low-mass M-dwarf companion. In both systems, the substellar donor overfills its Roche lobe, driving mass transfer via direct-impact accretion onto the surface of the M dwarf rather than through an accretion disk. This mass transfer produces a large, accretion-powered hot region on the surface of the M-dwarf, which is periodically eclipsed by the brown dwarf companion in the candidate system ZTF J1444+4820 . These objects represent the first known examples of mass transfer from substellar donors to main-sequence stars and define a previously unrecognized class of ultracompact accreting binaries. Their existence extends classical accretion physics into a lower-mass regime and establishes a new laboratory for testing theories of binary evolution and mass transfer near the stellar--substellar boundary.</div>
+</div>
+<div id="card_vitas_totality" class="session-card">
+  <div class="time">12:10 – 12:40</div>
+  <div class="title">From Ancient Omens to Modern Astrophysics: Why We Still Chase Totality</div>
+  <div class="speaker">Nikola Vitas</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_vitas_totality">
+    Abstract
+  </button>
+  <div id="abs_vitas_totality" class="collapse abstract">A brief history of solar eclipses, from the first historical records to modern days. Solar eclipses in the Iberian peninsula. Why the eclipses are still scientifically interesting today? How to safely observe the eclipse and what to expect from the day?</div>
+</div>
+<div class="session-card special-card">
+  <div class="time">Afternoon</div>
+  <div class="title">Free afternoon for observing and enjoying the eclipse</div>
+
+</div>
+</div>
+    </div>
+  </div>
+</div><div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#day4">August 13</button>
+  </h2>
+  <div id="day4" class="accordion-collapse collapse">
+    <div class="accordion-body">
+      <div class="session-block">
+  <div class="section-title">Session IV: Substellar Cosmogony</div>
+  <div class="moderators">Moderators: Clemence Fontanive &amp; Nuria Huélamo</div>
+  <div class="session-card" id="card_barrado_navascues">
+  <div class="time">10:00 – 10:30</div>
+  <div class="title">Disks around Ultracool Dwarfs</div>
+  <div class="speaker">David Barrado Navascués</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_barrado_navascues">
+    Abstract
+  </button>
+  <div id="abs_barrado_navascues" class="collapse abstract">Not yet.</div>
+</div>
+<div id="card_jayawardhana" class="session-card">
+  <div class="time">10:30 – 10:50</div>
+  <div class="title">Disks of Young Free-Floating Planetary-Mass Objects: New Results from JWST and VLT</div>
+  <div class="speaker">Ray Jayawardhana</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_jayawardhana">
+    Abstract
+  </button>
+  <div id="abs_jayawardhana" class="collapse abstract">We present findings from our ultra-deep imaging spectroscopic studies of free-floating planetary-mass objects (FFPMOs) in nearby star-forming regions using the James Webb Space Telescope. In the NGC1333 young star cluster, we recover 19 known brown dwarfs, and identify six new FFPMOs with L-dwarf spectral types. One, at $\sim$5 Jupiter-masses, shows clear infrared excess emission and is a good candidate to be the lowest-mass object known to have a disk. The paucity of Jupiter-mass objects, despite the survey's unprecedented sensitivity, suggests that our observations may reach the lowest-mass objects that formed like stars in NGC1333. We also search for wide binaries in our images and report a young brown dwarf with a planetary-mass companion. In a separate JWST, we target eight previously known FFPMOs in nearby young regions, and find that six have mid-infrared excess emission above the photosphere, as well as silicate emission features, demonstrating the presence of dusty disks. The shape and strength of the latter features constitute strong evidence of grain growth and crystallization, similar to what is seen in young brown dwarfs and stars. Moreover, we detect emission lines from hydrocarbon molecules in the disks of several targets –most notably Cha 1107-7626, which shows unambiguously methane and ethylene lines, suggesting a carbon-rich disk, as well as hydrogen recombination lines implying ongoing accretion. Its disk spectrum looks remarkably similar to that of a very low mass star with a carbon-rich disk, and a model assuming gas temperatures of a few hundred Kelvin in the inner disk can account for the hydrocarbon lines.</div>
+</div>
+<div id="card_gonzalez_ruilova" class="session-card">
+  <div class="time">10:50 – 11:10</div>
+  <div class="title">Gas and dust structures around proto Brown Dwarfs in Ophiuchus</div>
+  <div class="speaker">Camilo González-Ruilova</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_gonzalez_ruilova">
+    Abstract
+  </button>
+  <div id="abs_gonzalez_ruilova" class="collapse abstract">The formation of brown dwarfs (BDs) and their associated planetary systems has been debated for decades, leading to several proposed formation scenarios. However, observational constraints on proto-BDs at very early evolutionary stages remain scarce, limiting our ability to discriminate among these theories and to understand how planet formation proceeds within their protoplanetary disks. We present ALMA observations of more than 15 proto-BD candidates located in the Ophiuchus molecular clouds. Analysis of the continuum emission and CO transition lines reveals a diverse range of structures, including protoplanetary disks, outflows, envelopes, and streamers interacting with their central objects. The sources are classified as Class I, flat-spectrum, and early Class II objects, bridging the gap between protostellar cores and the more evolved Class II BDs previously studied. Our statistical analysis indicates an excess of young proto-BDs compared to other young stellar objects in Ophiuchus, with disks containing sufficient material to support planet formation at early evolutionary stages.</div>
+</div>
+<div id="card_kammerer" class="session-card">
+  <div class="time">11:10 – 11:30</div>
+  <div class="title">Direct characterization of substellar companions in the VLTI/GRAVITY+ era: Probing planet formation on the population scale</div>
+  <div class="speaker">Jens Kammerer</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_kammerer">
+    Abstract
+  </button>
+  <div id="abs_kammerer" class="collapse abstract">More than 6000 exoplanets have been discovered to date, yet the formation and early evolution of giant planets remain an unsolved puzzle. Different planet formation mechanisms make varied predictions about the planets’ chemical and dynamical parameters, and the key to unraveling formation pathways lies in combining multiple formation tracers on a population scale. Taking advantage of the contrast gain obtained by combining adaptive optics with long-baseline interferometry, the VLTI/GRAVITY instrument offers a unique perspective on the population of young substellar companions. In this talk, we will present the new ExoGRAVITY Spectral Library, a public library of GRAVITY K-band ($\sim$2.0-2.4 micron) spectra of $\sim$40 young, directly imaged giant planets and brown dwarfs, all processed, calibrated, and presented in a uniform way. With self-consistent atmosphere models and atmospheric retrievals, the physical parameters, metallicity, and C/O ratio of the substellar companions can be constrained, kick-starting the difficult process of linking planetary formation with measured abundances on the population scale. For our brightest targets, high resolution spectra offer insights into carbon isotopolog ratios. Our large sample size further enables the identification and analysis of statistical trends seen through the substellar L-T transition. Being currently commissioned, the GRAVITY+ instrumentation upgrade will expand our sample to fainter and closer-in exoplanets in the near future, enabling the direct follow-up of dozens of young giant planets discovered by Gaia. Precise dynamical masses obtained by combining orbital constraints from Gaia and GRAVITY will shine light on the formation entropy of these companions, providing complementary constraints on planet formation theories.</div>
+</div>
+<div id="card_endl" class="session-card">
+  <div class="time">11:30 – 11:50</div>
+  <div class="title">Substellar Companions from the legacy planet survey at McDonald Observatory</div>
+  <div class="speaker">Michael Endl</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_endl">
+    Abstract
+  </button>
+  <div id="abs_endl" class="collapse abstract">Legacy radial velocity (RV) surveys with time baselines exceeding 25 years offer a unique opportunity to probe orbital separations of 5–10 au for substellar companions around nearby stars. In this talk, I will present new results from the RV programs at McDonald Observatory, which leverage all available high-resolution spectrographs to obtain precise RV measurements and uncover previously undetected substellar companions. Our exceptionally long baselines—over 30 years in some cases—allow us to explore orbital regimes that remain challenging for other observational techniques, such as direct imaging. I will also highlight the powerful synergy between our RV data and the astrometric measurements provided by ESA’s Gaia mission.</div>
+</div>
+<div id="card_bejar" class="session-card">
+  <div class="time">11:50 – 12:10</div>
+  <div class="title">Complex Periodic Variables: planetary formation at the substellar frontier</div>
+  <div class="speaker">Víctor J. S. Béjar</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_bejar">
+    Abstract
+  </button>
+  <div id="abs_bejar" class="collapse abstract">Complex Periodic Variable (CPV) stars, are a fascinating new class of young, fast rotating very low-mass stars recently identified with Kepler and TESS (Bouma et al. 2024), which shows transit-like dips at the co-rotation radius.  Although the physical mechanism of these dips is currently unknown, they could be related to the presence of dust material in a debris disk or evaporated from a planet, or to the ejection of coronal gas material from the stars. Here we summarize the importance of CPVs, some of which are very low mass young binaries close to the substellar borderline. Their dynamical mass determination and understanding of the transiting material can shed light of the brown dwarf frontier at these young ages and planetary formation at very low masses. We present the latest results of a photometric, spectroscopic, radial velocity and astrometric monitoring campaign spanning several years in the optical and radio of 2M0508-21, a young, fast rotating (6.7h) M5 binary system belonging to $\beta$ Pic ($\sim$20 Myr). This represents the most extensive dataset of a CPV system to date, providing opportunity for a comprehensive characterization to shed light on this phenomenon.</div>
+</div>
+<div class="session-card special-card">
+  <div class="time">12:10 – 12:30</div>
+  <div class="title">Coffee break</div>
+
+</div>
+<div class="session-card" id="card_brunton" >
+  <div class="time">12:30 – 12:50</div>
+  <div class="title">Stellar properties and planetary resonance: modeling the inner disk edge and orbital convergence</div>
+  <div class="speaker">Ian R. Brunton</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_brunton">
+    Abstract
+  </button>
+  <div id="abs_brunton" class="collapse abstract">Magnetospheric truncation of a protoplanetary disk is one of the most fascinating links between stellar properties and the dynamics of short-period exoplanets. In particular, a star’s magnetic field and rotational frequency determine the location and sharpness of the inner disk edge. For sub-Jovian planets migrating inward under type-I torques, this edge then serves as a natural zone for halting migration and orbital convergence, thus facilitating the formation of resonant chains seen in a plethora of compact planetary systems today. Although the importance of magnetospheric truncation is universally recognized, a nuanced understanding of exactly how the physical structure of the disk edge determines capture into resonance, and the terminal architecture of short-period planets remains uncertain. Here, we investigate this phenomenon by specifically examining the key control parameter for convergence at the edge: the disk surface-density gradient. We present a novel method for modeling this gradient at a magnetospheric boundary within N-body simulations, enabling controlled experiments across a broad range of disk and stellar conditions. In applying our model both generically, and to systems with measured mass and period ratios, we have derived unique quantitative constraints on the coupled evolution of stellar magnetospheres, stellar spin, and planetary orbits. Our results thus illuminate the extent to which stellar magnetic fields, disk inflows, and migration torques collectively conspire to set the final orbits of sub-Jovian planets. Going forward, our prescription is readily adaptable and provides a practical framework for mapping observed planetary architectures to the underlying stellar and planetary physics that influenced their evolution.</div>
+</div>
+<div id="card_almendros_abad" class="session-card">
+  <div class="time">12:50 – 13:10</div>
+  <div class="title">Substellar disk accretion: discovery of an accretion burst in a planetary-mass object</div>
+  <div class="speaker">Victor Almendros-Abad</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_almendros_abad">
+    Abstract
+  </button>
+  <div id="abs_almendros_abad" class="collapse abstract">Brown dwarfs (BDs) and free-floating planetary-mass objects (FFPMOs) in star-forming regions bridge the mass range between stars and planets. Protoplanetary disks are common around them, and their low masses and modest accretion rates make these systems uniquely sensitive probes of the mechanisms that regulate disk evolution, dispersal, and planet formation. In this talk, I will present recent results on disk accretion across the very-low-mass and substellar regime, from cool stars and BDs down to FFPMOs.  Using homogeneous optical and near-infrared spectroscopy obtained with VLT/X-Shooter, we have measured mass accretion rates for BDs and very low-mass stars in several nearby regions spanning ages of 1-10 Myr. We find that accretion declines more rapidly at the lowest masses during the first few Myr, revealing clear mass-dependent behaviour that provides key constraints for disk evolution models.  Pushing into the planetary-mass domain, multi-epoch spectroscopy has led us to discover the first accretion burst ever observed in a FFPMO, marked by dramatic variability in line diagnostics and the emergence of water-vapour emission. This event represents the first EXor-like outburst at such low masses and the first evidence that accretion-driven chemical changes occur in disks around planetary-mass objects.  I will place these results in the context of current models, highlighting substellar systems as powerful laboratories for testing disk physics and the evolution of planet-forming environments.</div>
+</div>
+<div id="card_gupta" class="session-card">
+  <div class="time">13:10 – 13:30</div>
+  <div class="title">Brown Dwarfs in the Nearby Young Cluster IC 1396</div>
+  <div class="speaker">Saumya Gupta</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_gupta">
+    Abstract
+  </button>
+  <div id="abs_gupta" class="collapse abstract">Brown dwarfs form a bridge between stars and planets. Young stellar clusters are hub of star formation and hence, ideal for performing comprehensive studies over the least explored sub-stellar regime. The nearby young cluster, IC 1396 with its feedback-driven environment, is ideal to conduct such study. We employ a multi-wavelength approach including deep Subaru HSC, Gaia DR3, Pan-STARRS, UKIDSS/2MASS photometry, and machine learning approach to identify the cluster members complete down to $\sim$ 0.03 M$\odot$ in the central 22' area of IC 1396. We have identified a total of 458 cluster members, which includes 62 brown dwarfs. These brown dwarfs are used to establish the distribution of mass in the region. In the studied area of the cluster, we have determined that the ratio of stars to brown dwarfs is $\sim$ 6, within a stellar mass range of 0.03 - 1 M$\odot$. As the distance from the central OB-stars grows, the observed brown dwarf fraction in the cluster also increases. This study also compiles 15 young stellar clusters to check the variation of star-to-brown dwarf ratio relative to stellar density and UV flux This is the deepest study of IC 1396 as of yet and it will pave the way to understand various aspects of brown dwarfs using spectroscopic observations in future.</div>
+</div>
+<div id="card_vale" class="session-card">
+  <div class="time">13:30 – 13:50</div>
+  <div class="title">Substellar population of the young massive cluster RCW 36 in Vela</div>
+  <div class="speaker">Afonso Manuel Ribeiro Guerreiro do Brito do Vale</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_vale">
+    Abstract
+  </button>
+  <div id="abs_vale" class="collapse abstract">The exact shape of the initial mass function (IMF) down to the brown dwarf regime remains a fundamental yet contentious topic in the study of stellar formation and evolution. Understanding how different environments affect the formation of stars and brown dwarfs (BDs) is essential. RCW~36 is an embedded, young, massive cluster in the Vela Molecular Ridge ($\sim$1\,kpc), with a stellar surface density comparable to the Orion Nebula Cluster, and is therefore well suited for testing the impact of such environmental effects on the IMF. We used deep HAWK-I/VLT near-infrared observations with ground-layer adaptive optics, complemented by 2MASS, SOFI/NTT, and Gaia~DR3 kinematics to obtain the deepest census of the stellar and substellar populations in RCW~36 yet. Nebular emission was removed using the deep-learning algorithm DeNeb, improving source extraction and increasing the completeness down to 0.03\,$M_\odot$. Membership weights were assigned through statistical comparisons of color--magnitude diagrams between RCW~36 and a control field, and individual masses were estimated from model isochrones. Employing the membership weights, we found a median of 426 members of RCW~36, including approximately 70--90 brown dwarfs. We determine the IMF ($\mathrm{d}N/\mathrm{d}M \propto M^{-\alpha}$) down to $\sim$0.03\,$M_\odot$, described by a broken power law with a slope that is shallower than the Salpeter slope in the high-mass regime and a flatter slope of $0.46 \pm 0.14$ between 0.03--0.20\,$M_\odot$. The resulting star--BD ratio of 2--5 is consistent with those measured in other young Galactic clusters. Lastly, we also detect signs of possible primordial mass segregation.</div>
+</div>
+<div id="card_rom" class="session-card">
+  <div class="time">13:50 – 14:10</div>
+  <div class="title">Environmental trends in the substellar IMF from Trumpler 14 and Westerlund 2</div>
+  <div class="speaker">Tamara Rom</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_rom">
+    Abstract
+  </button>
+  <div id="abs_rom" class="collapse abstract">Whether the substellar initial mass function (IMF) is universal or shaped by environment is a key open question in brown dwarf science. Young massive clusters offer extreme testbeds: their high densities, strong radiation fields, and dynamical activity may either enhance fragmentation or destroy low-mass cores before collapse. In this contribution, we will present our results on the substellar IMF in two massive, young clusters Trumpler~14 and Westerlund~2, based on the data from GeMS/GSAOI and NIRCam/JWST, respectively. We probe the young massive cluster Trumpler~14 down to 0.01\,$M_\odot$. We find a deficit of objects below 0.03\,$M_\odot$, suggesting that extreme environments may inhibit brown dwarf formation. Westerlund~2, observed as part of the Extended Westerlund~1 and 2 Open Clusters Survey (EWOCS), we study for the first time ever in the substellar regime and down to $\sim$0.01\,$M_\odot$. Preliminary results reveal similar trends, pointing toward a systematic environmental suppression of substellar object production rather than stochastic or cluster-specific effects.</div>
+</div>
+<div id="card_panwar" class="session-card">
+  <div class="time">14:10 – 14:30</div>
+  <div class="title">Probing the Role of Environment in Shaping Stellar and Substellar Populations</div>
+  <div class="speaker">Neelam Panwar</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_panwar">
+    Abstract
+  </button>
+  <div id="abs_panwar" class="collapse abstract">Stars and substellar objects form in dense molecular cloud complexes. Feedback from massive stars in such regions forms molecular clouds that may give rise to structures such as pillars, globules, and bright-rimmed clouds. Here, we present a multi-wavelength analysis of young star-forming regions (SFRs) across diverse environments. By examining the spatial distribution of young sources relative to the different remnant cloud structures and the mass distribution into the stellar/substellar regime, we assess how the radiation from massive stars, stellar density, and cloud morphology may shape the stellar and substellar populations in SFRs.</div>
+</div>
+<div class="session-card special-card">
+  <div class="time">14:30 – 16:00</div>
+  <div class="title">Lunch break</div>
+
+</div>
+<div class="session-card"  id="card_olivares">
+  <div class="time">16:00 – 16:30</div>
+  <div class="title">Membership Assessment of Substellar Objects in Young Stellar Associations and Open Clusters</div>
+  <div class="speaker">Javier Olivares</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_olivares">
+    Abstract
+  </button>
+  <div id="abs_olivares" class="collapse abstract">Not yet.</div>
+</div>
+<div id="card_jones" class="session-card">
+  <div class="time">16:30 – 16:50</div>
+  <div class="title">Lithium Dwarfs from LAMOST</div>
+  <div class="speaker">Hugh Jones</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_jones">
+    Abstract
+  </button>
+  <div id="abs_jones" class="collapse abstract">We report the discovery of M dwarfs with the strong resonance lines of lithium from DR12 of the LAMOST Low Resolution Spectrum archive. Although the spectra are taken with a survey instrument their status as <100 Myr objects is confirmed by the presence of H alpha emission, their position in colour-magnitude and Toomre diagrams, as well as short rotational periods. Atmospheric parameters and in particular lithium abundances, H alpha line strengths, and space velocities are derived from their spectra. Many of them are strong candidates to be moving group members. Around half of them are likely to be brown dwarfs with a number of them being likely binaries which if resolved can be important benchmarks.</div>
+</div>
+<div id="card_beiler" class="session-card">
+  <div class="time">16:50 – 17:10</div>
+  <div class="title">How JWST Shifts Our Understanding of the Substellar Mass Function</div>
+  <div class="speaker">Samuel Beiler</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_beiler">
+    Abstract
+  </button>
+  <div id="abs_beiler" class="collapse abstract">The initial mass function is one of the most fundamental measurements of stellar and substellar astronomy, with volume-limited samples being the gold standard for determining the underlying formation function. Previous attempts to accurately constrain the substellar end of the initial mass function have been hampered in part due to imprecise luminosity measurements for the dimmest objects and an inadequate handling of systematic uncertainties. It is only now that we are comfortably in the era of JWST that we have enough observations of late T and Y dwarfs to accurately determine the luminosities of these coldest objects and constrain both the low-end of the mass function and the age distribution of the substellar local solar neighborhood. In this talk, I will present the most accurate to date 20 pc luminosity function of L, T, and Y dwarfs and the modeling required to probe the fundamental mass and birthrate functions. Our measured luminosity function deviates significantly from the literature, especially in the low-mass regime that provides the strongest constraints on the underlying mass function. Constraints on the birthrate allow us to probe how the local substellar population has evolved due to galactic dynamics. Our results provide brand new insight into the initial mass function of the cold brown dwarfs, place limits on the minimum mass of star formation, and lay out the next steps in improving our understanding of the local solar neighborhood.</div>
+</div>
+<div id="card_utsumi" class="session-card">
+  <div class="time">17:10 – 17:30</div>
+  <div class="title">The Formation Mechanisms of Brown Dwarfs Revisited: Naked First Cores and Brown Dwarf Progenitors</div>
+  <div class="speaker">Shusuke Utsumi</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_utsumi">
+    Abstract
+  </button>
+  <div id="abs_utsumi" class="collapse abstract">Brown dwarfs are astronomical objects with masses of about 0.01–0.08 solar masses, occupying the intermediate regime between planets and stars. Despite extensive study, a unified formation scenario has not been established. One proposed pathway is a scaled-down version of ordinary star formation through fragmentation of molecular-cloud filaments; however, this scenario remains uncertain because filaments with the theoretically predicted width of about 0.001 pc have not yet been clearly confirmed observationally.  We propose a new formation mechanism based on encounters between first hydrostatic cores. A first core is a transient hydrostatic object formed immediately after the initial collapse in star formation. It typically has an initial mass of about 0.01 solar masses, survives for roughly 10\textasciicircum{}3 years in spherical symmetry, and normally grows through accretion from its surrounding envelope before undergoing the second collapse to form a protostar. Our hydrodynamical simulations show that when two first cores interact, the envelope can be stripped while the core itself remains hydrostatic. The resulting “Naked First Core” cannot continue accreting and is therefore expected to remain near 0.01 solar masses, consistent with a brown dwarf. In typical clusters, several tens of such objects may form over the cluster lifetime.  Because ordinary first cores are difficult to detect owing to their thick envelopes, Naked First Cores with much thinner envelopes may provide a promising observational signature.</div>
+</div>
+<div  class="session-card special-card">
+  <div class="time">17:30 – 18:00</div>
+  <div class="title">Coffee break</div>
+
+</div>
+<div class="session-card">
+<!--  <div class="time">18:00 – 18:20</div>
+  <div class="title">M-dwarf stellar parameters from Euclid DR1 (Q1) using machine learning</div>
+  <div class="speaker">Patricia Cruz</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_cruz">
+    Abstract
+  </button>
+  <div id="abs_cruz" class="collapse abstract">We present the results of stellar parameter estimations based on spectral energy distribution (SEDs) fittings, using the photometry from the Euclid Quick Data Release (Q1). For the fitting, we implemented a beta version of PyVOSA, an open-source Python implementation of the VO SED Analyzer (VOSA) framework, designed to analyse SEDs within a Virtual Observatory environment. In our workflow, PyVOSA uses VO-compliant theoretical model grids and SED fittings to derive stellar parameters from the combined Euclid and Pan-STARRS photometry. The results will be compared with independent estimates, allowing cross-validation of methodologies. The combined use of VO tools such as VOSA and Python-based interfaces demonstrates a powerful framework for analysing large stellar datasets in the era of wide-field surveys.</div>
+</div>-->
+<div id="card_mohandasan" class="session-card">
+  <div class="time">18:00 – 18:20</div>
+  <div class="title">Exploring Ultracool dwarfs with Euclid and Gaia</div>
+  <div class="speaker">Anjana Mohandasan</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_mohandasan">
+    Abstract
+  </button>
+  <div id="abs_mohandasan" class="collapse abstract">Ultra-cool dwarfs (UCDs) are the lowest-mass, coldest, and faintest products of star formation. Despite their abundance in the Milky Way, they remain difficult to detect because most are too faint for Gaia and many ground-based surveys. Euclid’s wide and deep near-infrared observations are expected to transform this field by enabling the discovery of an unprecedented number of new UCDs.  In this study, I analyse Euclid Quick Release 1 data covering 20 square degrees in the Euclid Deep Field North to investigate a large sample of UCD candidates. These objects were initially selected as contaminants in the QSO search. I examine their spectral features and identify known UCDs within the dataset to refine photometric and spectroscopic selection criteria. Fluxes appropriate for point-like sources are extracted from Euclid MER photometry, and candidates are characterised using colour–colour diagrams.   Deviations in spectral features and photometric trends reveal particularly intriguing objects. Many candidates exhibit high proper motions, suggesting they may be nearby and potentially low-gravity sources. Combining Euclid observations with Gaia further enhances the analysis and reveals additional noteworthy characteristics.  As the Euclid mission progresses, the UCD sample will grow substantially, improving constraints on very low-mass stars and substellar objects. This expanding dataset will refine substellar mass and luminosity functions and provide new insights into substellar formation history and the chemical evolution of the Galaxy.</div>
+</div>
+<div id="card_vitas_ml" class="session-card">
+  <div class="time">18:20 – 18:40</div>
+  <div class="title">Unsupervised ML for identification of UCDs in the EUCLID survey</div>
+  <div class="speaker">Nikola Vitas</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_vitas_ml">
+    Abstract
+  </button>
+  <div id="abs_vitas_ml" class="collapse abstract">Photometric searches for ultracool dwarfs (UCDs) are intentionally inclusive, while spectroscopic confirmation based on template fitting is conservative and typically requires high signal-to-noise data. In the Euclid Q1 release, approximately 5300 photometric UCD candidates were identified, about 90\% of which have slitless near-infrared spectra. However, only a small fraction could be securely classified, largely because Euclid photometry reaches roughly 1.5 magnitudes deeper than its red-grism spectroscopy. This disparity motivates a systematic exploration of the spectral content of photometrically selected but spectroscopically unconfirmed candidates and an assessment of how much physical information can be extracted from spectra of modest quality. We applied $k$-means clustering to denoised spectra of 4217 candidates, excluding severely corrupted data and extreme outliers. The clustering output was evaluated through visual inspection and comparison with conservative $\chi^2$ template fitting. Despite the prevalence of low signal-to-noise spectra, the clustering reveals clear morphological structure. Four clusters show centroid spectra consistent with late-M, L, and early-T dwarfs and contain nearly 1000 objects, largely overlapping with previously identified UCDs. Additional clusters display strong water-band features indicative of cool atmospheres. Inspection of less distinct groups led to the identification of a metal-poor ultracool subdwarf candidate (tentatively usdL4), the first such object found in Euclid spectroscopic data, along with several further metal-poor candidates and diverse non-UCD morphologies. Unsupervised clustering thus provides a scalable framework for extracting population-level and rare-object information from large, heterogeneous, low-SNR spectral datasets, and will be increasingly valuable for future Euclid data releases.</div>
+</div>
+<div id="card_tata" class="session-card">
+  <div class="time">18:40 – 19:10</div>
+  <div class="title">Applications of ML methods to Substellar Astrophysics</div>
+  <div class="speaker">Ramarao Tata</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_tata">
+    Abstract
+  </button>
+  <div id="abs_tata" class="collapse abstract">Not yet.</div>
+</div>
+<div id="card_tsilia" class="session-card">
+  <div class="time">19:10 – 19:30</div>
+  <div class="title">The Very Low-Mass Field IMF in the Euclid Era</div>
+  <div class="speaker">Styliani Tsilia</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_tsilia">
+    Abstract
+  </button>
+  <div id="abs_tsilia" class="collapse abstract">The initial mass function (IMF) at the lowest masses, encompassing brown dwarfs and free-floating planetary-mass objects, remains poorly constrained due to limited sample sizes. The Euclid mission provides a unique opportunity to overcome this limitation through its wide-area, deep and high-resolution near-infrared imaging, enabling the identification of ultracool dwarfs (UCDs) over unprecedented volumes of the Galaxy with statistically robust samples.  We present first steps toward constraining the very low-mass field IMF using Euclid Quick Data Release 1 (Q1) and Data Release 1 (DR1). We utilise UCD candidates that have been selected by leveraging both Euclid’s photometry and spectroscopy, while accounting for contamination and survey completeness.  These field measurements provide a crucial counterpart to studies in young clusters, offering insight into how diverse formation environments and dynamical evolution shape the present-day substellar population. This work represents an initial milestone toward exploiting Euclid’s full legacy potential for substellar astrophysics, facilitating a quantitative discussion of open questions such as the shape, low-mass cutoff, and universality of the IMF.</div>
+</div>
+<div id="card_aguilar" class="session-card">
+  <div class="time">19:30 – 19:50</div>
+  <div class="title">M-dwarf stellar parameters from Euclid Q1 using machine learning [ONLINE]</div>
+  <div class="speaker">John Fabio Aguilar Sànchez</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_aguilar">
+    Abstract
+  </button>
+  <div id="abs_aguilar" class="collapse abstract">We present the results of a first machine-learning-based approach to estimate stellar atmospheric parameters using photometric data from the Euclid Quick Data Release (Q1). Our analysis combines photometric colours from Euclid Q1 with optical photometry from Pan-STARRS DR2, enabling an extended colour baseline particularly sensitive to cool stars. The target sample was selected using colour–colour diagrams, providing an efficient photometric criterion for identifying late-type stars, focused on M-dwarfs. Stellar parameters effective temperature ($T_\mathrm{eff}$), surface gravity ($\log g$), and metallicity ([Fe/H]), together with their associated uncertainties, were inferred using the k-means method combined with a modified K-nearest neighbours (KNN) algorithm specifically adapted for photometric data. As a reference dataset, we employed synthetic photometry derived from stellar models, ensuring coverage across a wide range of stellar parameters.</div>
+</div>
+
+<div class="session-card special-card">
+  <div class="time">21:00 – 23:00</div>
+  <div class="title">Substellar Conference Dinner</div>
+
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div><div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#day5">August 14</button>
+  </h2>
+  <div id="day5" class="accordion-collapse collapse">
+    <div class="accordion-body">
+      <div class="session-block">
+  <div class="section-title">Session V: Substellar Challenges</div>
+  <div class="moderators">Moderator: Ray Jayawardhana</div>
+  <div class="session-card" id="card_biller">
+  <div class="time">10:00 – 10:30</div>
+  <div class="title">Exoplanet Characterization</div>
+  <div class="speaker">Beth Biller</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_biller">
+    Abstract
+  </button>
+  <div id="abs_biller" class="collapse abstract">Not yet.</div>
+</div>
+<div id="card_mccarthy" class="session-card">
+  <div class="time">10:30 – 10:50</div>
+  <div class="title">Capabilities of the Vera C. Rubin Observatory and the Nancy Grace Roman Space Telescope for Advancing Studies of Brown Dwarf Atmospheres</div>
+  <div class="speaker">Allison McCarthy</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_mccarthy">
+    Abstract
+  </button>
+  <div id="abs_mccarthy" class="collapse abstract">Brown dwarf observations with JWST have demonstrated the extraordinary power of modern facilities to probe substellar atmospheres in remarkable detail, revealing molecular structure, cloud properties, and atmospheric chemistry in individual objects. The Vera C. Rubin Observatory and the Nancy Grace Roman Space Telescope extend this progress into the survey era, where atmospheric behavior can be studied across large and diverse populations and where many new brown dwarfs will be discovered.
+
+  In this talk, I discuss the emerging capabilities of Rubin and Roman for advancing studies of brown dwarf atmospheres. Rubin’s deep, multi-epoch survey will provide parallaxes and proper motions for large samples of ultracool dwarfs, enabling distances, luminosities, and kinematic population memberships to be determined for objects beyond the reach of previous astrometric surveys. Roman will deliver high-precision near-infrared time-series photometry and spectroscopy at wavelengths where variability amplitudes are largest and most diagnostic of cloud structure, temperature perturbations, and atmospheric dynamics. Together, Rubin’s population-scale physical context and Roman’s atmospheric diagnostics will enable variability studies for a large number of objects, helping place brown dwarf atmospheres within the broader continuum of cool atmospheres spanning from low-mass stars to giant exoplanets.</div>
+</div>
+<div id="card_rebolo" class="session-card">
+  <div class="time">10:50 – 11:20</div>
+  <div class="title">The challenge to detect terrestrial planets around brown dwarfs and the CELESTE technology program</div>
+  <div class="speaker">Rafael Rebolo</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_rebolo">
+    Abstract
+  </button>
+  <div id="abs_rebolo" class="collapse abstract">Long-term monitoring of brown dwarfs may lead to the detection of transiting  terrestrial planets.  In the habitable zone of L and T-type brown dwarfs planets may have orbital periods in the range 5-20 hours.  The monitoring of  isolated brown dwarfs with a   23 cm  space infrared telescope  like DUNE which will be located  at low-earth orbit may  detect terrestrial and even martian size planets.  Similarly, long-term monitoring of brown dwarf companions to solar-type stars orbiting at angular separations of 0.5-5 arcsec with the hybrid 3.5m telescope SELF using nulling interferometry for high contrast imaging may enable  planet transit detection in brown dwarfs from the  ground.  These two telescopes are under development in the famework of the CELESTE technolog program.   I will address the   observing programs with these telescopes which may lead to the potential to detect terrestrial planet detection with  the observing programs these two telescopes  which are  under development within the   CELESTE technology program  of the IAC.</div>
+</div>
+<div id="card_wagner" class="session-card">
+  <div class="time">11:20 – 11:40</div>
+  <div class="title">Imaging Nearby Temperate Giant Planets with the First 30-m-Class Telescope</div>
+  <div class="speaker">Kevin Wagner</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_wagner">
+    Abstract
+  </button>
+  <div id="abs_wagner" class="collapse abstract">The Large Binocular Telescope (LBT) offers an unprecedented opportunity to image nearby exoplanets in the habitable zones of Sun-like stars, particularly temperate giant planets with atmospheric effective temperatures of Teff$\sim$300K. Such objects remain poorly represented among known substellar populations, yet they provide critical benchmarks for atmospheric physics at terrestrial temperatures. The LBT Interferometer (LBTI) coherently combines light from the telescope’s two 8.4-m apertures to produce a Fizeau point spread function with the angular resolution of a 28.8-m filled aperture along its major axis, enabling “30-m-class” imaging performance in the mid-infrared. In this talk, I will present two major LBTI upgrades scheduled for on-sky commissioning in Fall 2026: (1) a quadruple annular groove phase mask (Q-AGPM) coronagraph, and (2) a Teledyne GeoSnap detector with a 13-$\mu$m cutoff. Together, these upgrades will substantially advance ground-based mid-IR exoplanet imaging, improving both contrast-limited and background-limited sensitivity. Finally, I will discuss the role of the upgraded LBTI/NOMIC instrument within the University of Arizona–led Breakthrough Watch Program, which aims to carry out the deepest mid-infrared observations to date of habitable-zone exoplanets around nearby Sun-like stars.</div>
+</div>
+<div id="card_perez_garrido" class="session-card">
+  <div class="time">11:40 – 12:10</div>
+  <div class="title">Brown Dwarfs as Laboratories for Dark Matter Physics</div>
+  <div class="speaker">Antonio Pérez-Garrido</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_perez_garrido">
+    Abstract
+  </button>
+  <div id="abs_perez_garrido" class="collapse abstract"> Brown dwarfs occupy a unique regime between giant planets and low-mass
+stars, characterized by partially degenerate interiors and a weakly
+varying mass–radius relation. These properties make them sensitive to
+additional gravitating components beyond standard baryonic matter. In
+this work, we investigate the structural and dynamical impact of dark
+matter embedded within brown dwarfs by modeling these objects as
+spherically symmetric, self-gravitating systems composed of two coupled
+fluids: ordinary baryons and self-interacting dark matter (SIDM). The
+baryonic component is described by a polytropic equation of state, while
+the dark-matter component is treated using an isothermal equation of
+state. The coupled hydrostatic equilibrium equations are solved
+self-consistently, allowing for a wide range of central density ratios
+and dark-matter velocity dispersions. We show that even small
+dark-matter fractions can lead to measurable modifications of the
+internal density profiles, mass–radius relation and dynamical
+properties.</div>
+</div>
+<div id="card_reyle" class="session-card">
+  <div class="time">12:10 – 12:40</div>
+  <div class="title">Substellar Conference Summary</div>
+  <div class="speaker">Céline Reylé</div>
+  <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#abs_reyle">
+    Abstract
+  </button>
+  <div id="abs_reyle" class="collapse abstract">Not yet.</div>
+</div>
+<div class="session-card special-card">
+  <div class="time">12:40 – 13:00</div>
+  <div class="title">Final remarks &amp; farewell</div>
+  <div class="speaker">LOC &amp; SOC chairs</div>
+</div>
+</div>
+    </div>
+  </div>
+</div>
 
     </main>
     <footer>
@@ -107,5 +1022,116 @@
         &copy; SUBSTELLAR ASTROPHYSICS
       </div>
     </footer>
-    </body>
+
+<script>
+(function () {
+  function getTarget(el) {
+    return el.getAttribute('data-bs-target') || el.getAttribute('data-target');
+  }
+
+  function show(el) {
+    if (!el) return;
+    el.classList.add('show');
+    const btn = document.querySelector('[data-bs-target="#' + el.id + '"], [data-target="#' + el.id + '"]');
+    if (btn) {
+      btn.classList.remove('collapsed');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function hide(el) {
+    if (!el) return;
+    el.classList.remove('show');
+    const btn = document.querySelector('[data-bs-target="#' + el.id + '"], [data-target="#' + el.id + '"]');
+    if (btn) {
+      btn.classList.add('collapsed');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function toggle(el) {
+    if (!el) return;
+    if (el.classList.contains('show')) hide(el);
+    else show(el);
+  }
+
+  function initButtons() {
+    document.querySelectorAll('[data-bs-target], [data-target]').forEach(btn => {
+      const sel = getTarget(btn);
+      const target = sel ? document.querySelector(sel) : null;
+      if (!target) return;
+
+      if (!target.classList.contains('show')) {
+        btn.classList.add('collapsed');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        btn.classList.remove('collapsed');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        toggle(target);
+        if (target.classList.contains('abstract') && target.classList.contains('show') && window.MathJax) {
+          MathJax.typesetPromise([target]);
+        }
+      });
+    });
+  }
+
+  window.expandAll = function () {
+    document.querySelectorAll('.abstract').forEach(el => show(el));
+    if (window.MathJax) MathJax.typesetPromise(Array.from(document.querySelectorAll('.abstract.show')));
+  };
+
+  window.collapseAll = function () {
+    document.querySelectorAll('.abstract').forEach(el => hide(el));
+  };
+
+  function openFromHashAndQuery() {
+    const params = new URLSearchParams(window.location.search);
+    const expandDays = params.get('expand') === 'true';
+
+    if (expandDays) {
+      document.querySelectorAll('.accordion-collapse').forEach(el => show(el));
+    }
+
+    const hash = window.location.hash;
+    if (!hash) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    const dayPanel = target.closest('.accordion-collapse');
+    if (dayPanel) show(dayPanel);
+
+    if (hash.startsWith('#card_')) {
+      const abs = target.querySelector('.abstract');
+      if (abs) {
+        show(abs);
+        if (window.MathJax) MathJax.typesetPromise([abs]);
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    if (hash.startsWith('#abs_')) {
+      show(target);
+      if (window.MathJax) MathJax.typesetPromise([target]);
+      const card = target.closest('.session-card') || target;
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    initButtons();
+    openFromHashAndQuery();
+  });
+
+  window.addEventListener('hashchange', function () {
+    openFromHashAndQuery();
+  });
+})();
+</script>
+
+</body>
     </html>
